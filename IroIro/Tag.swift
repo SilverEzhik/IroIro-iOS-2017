@@ -11,10 +11,12 @@ import UIKit
 class Tag: NSObject {
     var name:String = ""
     var notes:[Int] = []
+    var color:UIColor = UIColor.clear
     
-    init(name:String,notes:[Int]){
+    init(name:String,notes:[Int],color:UIColor){
         self.name=name
         self.notes=notes
+        self.color=color
     }
 
 }

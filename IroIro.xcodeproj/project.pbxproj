@@ -10,11 +10,15 @@
 		7301210C1EE64D630086AB80 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7301210B1EE64D630086AB80 /* Note.swift */; };
 		7301210E1EE64D740086AB80 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7301210D1EE64D740086AB80 /* Tag.swift */; };
 		9F5680A21EDCF48200E1F2B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */; };
-		9F5680A41EDCF48200E1F2B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A31EDCF48200E1F2B4 /* ViewController.swift */; };
 		9F5680A71EDCF48200E1F2B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680A51EDCF48200E1F2B4 /* Main.storyboard */; };
 		9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */; };
 		9F5680AC1EDCF48200E1F2B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */; };
 		9F5680AF1EDCF48200E1F2B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680AD1EDCF48200E1F2B4 /* LaunchScreen.storyboard */; };
+		A985C86A1EE6E944007DB83A /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C8691EE6E944007DB83A /* NoteViewController.swift */; };
+		A985C86C1EE6EA07007DB83A /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C86B1EE6EA07007DB83A /* NoteCell.swift */; };
+		A985C86E1EE6EA4D007DB83A /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C86D1EE6EA4D007DB83A /* TagCell.swift */; };
+		A985C8701EE6EA7C007DB83A /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C86F1EE6EA7C007DB83A /* NotesTableViewController.swift */; };
+		A985C8721EE6EA8C007DB83A /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C8711EE6EA8C007DB83A /* TagsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +26,16 @@
 		7301210D1EE64D740086AB80 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		9F56809E1EDCF48200E1F2B4 /* IroIro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IroIro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F5680A31EDCF48200E1F2B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9F5680A61EDCF48200E1F2B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F5680A91EDCF48200E1F2B4 /* IroIro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IroIro.xcdatamodel; sourceTree = "<group>"; };
 		9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F5680AE1EDCF48200E1F2B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F5680B01EDCF48200E1F2B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A985C8691EE6E944007DB83A /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		A985C86B1EE6EA07007DB83A /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		A985C86D1EE6EA4D007DB83A /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		A985C86F1EE6EA7C007DB83A /* NotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		A985C8711EE6EA8C007DB83A /* TagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +69,12 @@
 			isa = PBXGroup;
 			children = (
 				9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */,
-				9F5680A31EDCF48200E1F2B4 /* ViewController.swift */,
 				9F5680A51EDCF48200E1F2B4 /* Main.storyboard */,
+				A985C86F1EE6EA7C007DB83A /* NotesTableViewController.swift */,
+				A985C8711EE6EA8C007DB83A /* TagsTableViewController.swift */,
+				A985C86D1EE6EA4D007DB83A /* TagCell.swift */,
+				A985C86B1EE6EA07007DB83A /* NoteCell.swift */,
+				A985C8691EE6E944007DB83A /* NoteViewController.swift */,
 				9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */,
 				9F5680AD1EDCF48200E1F2B4 /* LaunchScreen.storyboard */,
 				9F5680B01EDCF48200E1F2B4 /* Info.plist */,
@@ -146,10 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F5680A41EDCF48200E1F2B4 /* ViewController.swift in Sources */,
+				A985C86E1EE6EA4D007DB83A /* TagCell.swift in Sources */,
+				A985C8701EE6EA7C007DB83A /* NotesTableViewController.swift in Sources */,
 				9F5680A21EDCF48200E1F2B4 /* AppDelegate.swift in Sources */,
 				7301210E1EE64D740086AB80 /* Tag.swift in Sources */,
+				A985C8721EE6EA8C007DB83A /* TagsTableViewController.swift in Sources */,
 				9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */,
+				A985C86C1EE6EA07007DB83A /* NoteCell.swift in Sources */,
+				A985C86A1EE6E944007DB83A /* NoteViewController.swift in Sources */,
 				7301210C1EE64D630086AB80 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
