@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7301210C1EE64D630086AB80 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7301210B1EE64D630086AB80 /* Note.swift */; };
+		7301210E1EE64D740086AB80 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7301210D1EE64D740086AB80 /* Tag.swift */; };
 		9F5680A21EDCF48200E1F2B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */; };
 		9F5680A41EDCF48200E1F2B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A31EDCF48200E1F2B4 /* ViewController.swift */; };
 		9F5680A71EDCF48200E1F2B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680A51EDCF48200E1F2B4 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7301210B1EE64D630086AB80 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		7301210D1EE64D740086AB80 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		9F56809E1EDCF48200E1F2B4 /* IroIro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IroIro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F5680A31EDCF48200E1F2B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				9F5680AD1EDCF48200E1F2B4 /* LaunchScreen.storyboard */,
 				9F5680B01EDCF48200E1F2B4 /* Info.plist */,
 				9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */,
+				7301210B1EE64D630086AB80 /* Note.swift */,
+				7301210D1EE64D740086AB80 /* Tag.swift */,
 			);
 			path = IroIro;
 			sourceTree = "<group>";
@@ -142,7 +148,9 @@
 			files = (
 				9F5680A41EDCF48200E1F2B4 /* ViewController.swift in Sources */,
 				9F5680A21EDCF48200E1F2B4 /* AppDelegate.swift in Sources */,
+				7301210E1EE64D740086AB80 /* Tag.swift in Sources */,
 				9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */,
+				7301210C1EE64D630086AB80 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
