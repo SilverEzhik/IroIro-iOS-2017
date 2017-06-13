@@ -8,10 +8,24 @@
 
 import UIKit
 
-class NotesTableViewController: UITableViewController {
-
+class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
+    var tag :String! = "all"
+    
+    var notes:[Note] = []
+    
+    var searchController : UISearchController!
+    var searchResults:[Note] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchBar.sizeToFit()
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        
+        self.tableView.tableHeaderView = self.searchController.searchBar
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,6 +37,23 @@ class NotesTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: search stuff
+    
+    func filterContentForSearchText(searchText: String) {
+        searchResults = notes.filter({ (note: Note) -> Bool in
+            let nameMatch = note.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            let contentMatch = (note.content as? String)?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            //since content is aan NSObject i think this will work not sure if it will properly be converted to string since we are storing attributed string
+            return nameMatch != nil || contentMatch != nil})
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let textToSearch = searchController.searchBar.text {
+            filterContentForSearchText(searchText: textToSearch)
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -82,14 +113,23 @@ class NotesTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showNote") {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let noteVC = segue.destination as! NoteViewController
+                if searchController.isActive {
+                    noteVC.note = searchResults[indexPath.row]
+                    
+                }
+                else {
+                    noteVC.note = notes[indexPath.row]
+                }
+            }
+        }
     }
-    */
+
 
 }
