@@ -9,7 +9,8 @@
 import UIKit
 
 class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
-    var tag = "all"
+    var tag :String! = "all"
+    
     var notes:[Note] = []
     
     var searchController : UISearchController!
@@ -44,6 +45,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
         searchResults = notes.filter({ (note: Note) -> Bool in
             let nameMatch = note.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
             let contentMatch = (note.content as? String)?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            //since content is aan NSObject i think this will work not sure if it will properly be converted to string since we are storing attributed string
             return nameMatch != nil || contentMatch != nil})
     }
     
