@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NotesTableViewController: UITableViewController, UISearchResultsUpdating , NSFetchedResultsControllerDelegate {
+class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     var tag = "all"
     var notes:[Note] = []
     
@@ -42,9 +42,9 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating ,
     
     func filterContentForSearchText(searchText: String) {
         searchResults = notes.filter({ (note: Note) -> Bool in
-            let nameMatch = place.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
-            let addressMatch = place.address?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
-            return nameMatch != nil || addressMatch != nil})
+            let nameMatch = note.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            let contentMatch = (note.content as? String)?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            return nameMatch != nil || contentMatch != nil})
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -111,14 +111,23 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating ,
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showNote") {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let noteVC = segue.destination as! NoteViewController
+                if searchController.isActive {
+                    noteVC.note = searchResults[indexPath.row]
+                    
+                }
+                else {
+                    noteVC.note = notes[indexPath.row]
+                }
+            }
+        }
     }
-    */
+
 
 }

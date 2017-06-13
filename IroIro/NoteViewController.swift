@@ -10,10 +10,7 @@ import UIKit
 
 class NoteViewController: UIViewController {
     
-    var tags:[Tag] = []
-    var content:String = ""
-    var name:String = ""
-    var time:Int = 0
+    var note:Note!
     
 
     override func viewDidLoad() {
