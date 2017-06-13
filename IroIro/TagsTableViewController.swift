@@ -12,7 +12,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
     var tags:[Tag] = []
     
     var searchController : UISearchController!
-    var searchResults:[Note] = []
+    var searchResults:[Tag] = []
 
     
     
@@ -45,7 +45,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
     func filterContentForSearchText(searchText: String) { //not sure why it gives error here
         searchResults = tags.filter({(tag:Tag)->Bool in
             let match = tag.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
-            return match! = nil
+            return match != nil
         })
     }
     
