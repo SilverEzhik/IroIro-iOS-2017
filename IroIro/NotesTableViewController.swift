@@ -44,8 +44,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     func filterContentForSearchText(searchText: String) {
         searchResults = notes.filter({ (note: Note) -> Bool in
             let nameMatch = note.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
-            let contentMatch = (note.content as? String)?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
-            //since content is aan NSObject i think this will work not sure if it will properly be converted to string since we are storing attributed string
+            let contentMatch = (note.content as! NSAttributedString).string.range(of: searchText, options: String.CompareOptions.caseInsensitive)
             return nameMatch != nil || contentMatch != nil})
     }
     
@@ -60,23 +59,35 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if searchController.isActive{
+            return searchResults.count
+        }
+        return notes.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as! NoteCell
+        var cellItem:Note
+        
+        if searchController.isActive{
+            cellItem = searchResults[indexPath.row]
+        }
+        else{
+            cellItem = notes[indexPath.row]
+        }
+        cell.name?.text = cellItem.name
+        cell.content.text = (cellItem.content as! NSAttributedString).string
+        cell.time.text = String (cellItem.time)
+        
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

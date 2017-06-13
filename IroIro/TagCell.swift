@@ -9,7 +9,10 @@
 import UIKit
 
 class TagCell: UITableViewCell {
-
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var count: UILabel!
+    var color:String!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -60,23 +60,34 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if searchController.isActive{
+            return searchResults.count
+        }
+        return tags.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell", for: indexPath) as! TagCell
+        var cellItem:Tag
 
-        // Configure the cell...
+        if searchController.isActive{
+            cellItem = searchResults[indexPath.row]
+        }
+        else{
+             cellItem = tags[indexPath.row]
+        }
+        cell.name?.text = cellItem.name
+        cell.color = cellItem.color
+        cell.count.text = String(describing: cellItem.notes?.count)
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
