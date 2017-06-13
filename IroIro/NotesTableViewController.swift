@@ -8,10 +8,23 @@
 
 import UIKit
 
-class NotesTableViewController: UITableViewController {
-
+class NotesTableViewController: UITableViewController, UISearchResultsUpdating , NSFetchedResultsControllerDelegate {
+    var tag = "all"
+    var notes:[Note] = []
+    
+    var searchController : UISearchController!
+    var searchResults:[Note] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchBar.sizeToFit()
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        
+        self.tableView.tableHeaderView = self.searchController.searchBar
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,6 +36,22 @@ class NotesTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: search stuff
+    
+    func filterContentForSearchText(searchText: String) {
+        searchResults = notes.filter({ (note: Note) -> Bool in
+            let nameMatch = place.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            let addressMatch = place.address?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            return nameMatch != nil || addressMatch != nil})
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let textToSearch = searchController.searchBar.text {
+            filterContentForSearchText(searchText: textToSearch)
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
