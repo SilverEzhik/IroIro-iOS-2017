@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		732B925B1EE8EC85009D7DD4 /* UIColorExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732B925A1EE8EC85009D7DD4 /* UIColorExtend.swift */; };
+		732B925B1EE8EC85009D7DD4 /* UIColorHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */; };
 		9F5680A21EDCF48200E1F2B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */; };
 		9F5680A71EDCF48200E1F2B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680A51EDCF48200E1F2B4 /* Main.storyboard */; };
 		9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */; };
 		9F5680AC1EDCF48200E1F2B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */; };
 		9F5680AF1EDCF48200E1F2B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680AD1EDCF48200E1F2B4 /* LaunchScreen.storyboard */; };
+		9FE410771EF1E8CF007A0350 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410721EF1E8CF007A0350 /* CloseButton.swift */; };
+		9FE410781EF1E8CF007A0350 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE410731EF1E8CF007A0350 /* Info.plist */; };
+		9FE410791EF1E8CF007A0350 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410751EF1E8CF007A0350 /* TagListView.swift */; };
+		9FE4107A1EF1E8CF007A0350 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410761EF1E8CF007A0350 /* TagView.swift */; };
+		9FE4107D1EF1E8E9007A0350 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */; };
+		9FE4107F1EF1E99D007A0350 /* TagColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4107E1EF1E99D007A0350 /* TagColors.swift */; };
 		A985C86A1EE6E944007DB83A /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C8691EE6E944007DB83A /* NoteViewController.swift */; };
 		A985C86C1EE6EA07007DB83A /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C86B1EE6EA07007DB83A /* NoteCell.swift */; };
 		A985C86E1EE6EA4D007DB83A /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C86D1EE6EA4D007DB83A /* TagCell.swift */; };
@@ -21,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		732B925A1EE8EC85009D7DD4 /* UIColorExtend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtend.swift; sourceTree = "<group>"; };
+		732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
 		9F56809E1EDCF48200E1F2B4 /* IroIro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IroIro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F5680A61EDCF48200E1F2B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -29,6 +35,13 @@
 		9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F5680AE1EDCF48200E1F2B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F5680B01EDCF48200E1F2B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FE410721EF1E8CF007A0350 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		9FE410731EF1E8CF007A0350 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FE410741EF1E8CF007A0350 /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
+		9FE410751EF1E8CF007A0350 /* TagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
+		9FE410761EF1E8CF007A0350 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
+		9FE4107E1EF1E99D007A0350 /* TagColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagColors.swift; sourceTree = "<group>"; };
 		A985C8691EE6E944007DB83A /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		A985C86B1EE6EA07007DB83A /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		A985C86D1EE6EA4D007DB83A /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -66,7 +79,9 @@
 		9F5680A01EDCF48200E1F2B4 /* IroIro */ = {
 			isa = PBXGroup;
 			children = (
+				9FE410711EF1E8CF007A0350 /* TagListView */,
 				9F5680A11EDCF48200E1F2B4 /* AppDelegate.swift */,
+				9FE4107B1EF1E8DA007A0350 /* NoteViewHelpers */,
 				9F5680A51EDCF48200E1F2B4 /* Main.storyboard */,
 				A985C86F1EE6EA7C007DB83A /* NotesTableViewController.swift */,
 				A985C8711EE6EA8C007DB83A /* TagsTableViewController.swift */,
@@ -77,9 +92,30 @@
 				9F5680AD1EDCF48200E1F2B4 /* LaunchScreen.storyboard */,
 				9F5680B01EDCF48200E1F2B4 /* Info.plist */,
 				9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */,
-				732B925A1EE8EC85009D7DD4 /* UIColorExtend.swift */,
+				732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */,
+				9FE4107E1EF1E99D007A0350 /* TagColors.swift */,
 			);
 			path = IroIro;
+			sourceTree = "<group>";
+		};
+		9FE410711EF1E8CF007A0350 /* TagListView */ = {
+			isa = PBXGroup;
+			children = (
+				9FE410721EF1E8CF007A0350 /* CloseButton.swift */,
+				9FE410731EF1E8CF007A0350 /* Info.plist */,
+				9FE410741EF1E8CF007A0350 /* TagListView.h */,
+				9FE410751EF1E8CF007A0350 /* TagListView.swift */,
+				9FE410761EF1E8CF007A0350 /* TagView.swift */,
+			);
+			path = TagListView;
+			sourceTree = "<group>";
+		};
+		9FE4107B1EF1E8DA007A0350 /* NoteViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */,
+			);
+			name = NoteViewHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,6 +150,7 @@
 				TargetAttributes = {
 					9F56809D1EDCF48200E1F2B4 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 99ATA84EJ7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -141,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FE410781EF1E8CF007A0350 /* Info.plist in Resources */,
 				9F5680AF1EDCF48200E1F2B4 /* LaunchScreen.storyboard in Resources */,
 				9F5680AC1EDCF48200E1F2B4 /* Assets.xcassets in Resources */,
 				9F5680A71EDCF48200E1F2B4 /* Main.storyboard in Resources */,
@@ -156,12 +194,17 @@
 			files = (
 				A985C86E1EE6EA4D007DB83A /* TagCell.swift in Sources */,
 				A985C8701EE6EA7C007DB83A /* NotesTableViewController.swift in Sources */,
+				9FE4107A1EF1E8CF007A0350 /* TagView.swift in Sources */,
 				9F5680A21EDCF48200E1F2B4 /* AppDelegate.swift in Sources */,
-				732B925B1EE8EC85009D7DD4 /* UIColorExtend.swift in Sources */,
+				9FE410771EF1E8CF007A0350 /* CloseButton.swift in Sources */,
+				732B925B1EE8EC85009D7DD4 /* UIColorHexExtension.swift in Sources */,
+				9FE410791EF1E8CF007A0350 /* TagListView.swift in Sources */,
 				A985C8721EE6EA8C007DB83A /* TagsTableViewController.swift in Sources */,
+				9FE4107F1EF1E99D007A0350 /* TagColors.swift in Sources */,
 				9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */,
 				A985C86C1EE6EA07007DB83A /* NoteCell.swift in Sources */,
 				A985C86A1EE6E944007DB83A /* NoteViewController.swift in Sources */,
+				9FE4107D1EF1E8E9007A0350 /* HashtagParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 99ATA84EJ7;
 				INFOPLIST_FILE = IroIro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -300,7 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 99ATA84EJ7;
 				INFOPLIST_FILE = IroIro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
