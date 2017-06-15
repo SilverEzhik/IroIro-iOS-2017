@@ -18,7 +18,7 @@
 		9FE410791EF1E8CF007A0350 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410751EF1E8CF007A0350 /* TagListView.swift */; };
 		9FE4107A1EF1E8CF007A0350 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410761EF1E8CF007A0350 /* TagView.swift */; };
 		9FE4107D1EF1E8E9007A0350 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */; };
-		9FE4107F1EF1E99D007A0350 /* TagColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4107E1EF1E99D007A0350 /* TagColors.swift */; };
+		9FE4107F1EF1E99D007A0350 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4107E1EF1E99D007A0350 /* Colors.swift */; };
 		A985C86A1EE6E944007DB83A /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C8691EE6E944007DB83A /* NoteViewController.swift */; };
 		A985C86C1EE6EA07007DB83A /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C86B1EE6EA07007DB83A /* NoteCell.swift */; };
 		A985C86E1EE6EA4D007DB83A /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985C86D1EE6EA4D007DB83A /* TagCell.swift */; };
@@ -41,7 +41,7 @@
 		9FE410751EF1E8CF007A0350 /* TagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
 		9FE410761EF1E8CF007A0350 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
-		9FE4107E1EF1E99D007A0350 /* TagColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagColors.swift; sourceTree = "<group>"; };
+		9FE4107E1EF1E99D007A0350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A985C8691EE6E944007DB83A /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		A985C86B1EE6EA07007DB83A /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		A985C86D1EE6EA4D007DB83A /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 				9F5680B01EDCF48200E1F2B4 /* Info.plist */,
 				9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */,
 				732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */,
-				9FE4107E1EF1E99D007A0350 /* TagColors.swift */,
+				9FE4107E1EF1E99D007A0350 /* Colors.swift */,
 			);
 			path = IroIro;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 				732B925B1EE8EC85009D7DD4 /* UIColorHexExtension.swift in Sources */,
 				9FE410791EF1E8CF007A0350 /* TagListView.swift in Sources */,
 				A985C8721EE6EA8C007DB83A /* TagsTableViewController.swift in Sources */,
-				9FE4107F1EF1E99D007A0350 /* TagColors.swift in Sources */,
+				9FE4107F1EF1E99D007A0350 /* Colors.swift in Sources */,
 				9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */,
 				A985C86C1EE6EA07007DB83A /* NoteCell.swift in Sources */,
 				A985C86A1EE6E944007DB83A /* NoteViewController.swift in Sources */,
