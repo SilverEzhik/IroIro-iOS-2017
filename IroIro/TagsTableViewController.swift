@@ -105,7 +105,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
              cellItem = tags[indexPath.row]
         }
         cell.name?.text = cellItem.name
-        cell.color = cellItem.color
+        cell.color = String(describing: cellItem.color as! UIColor)
         cell.count.text = String(describing: cellItem.notes?.count)
 
         return cell
