@@ -34,6 +34,8 @@ class Colors: NSObject {
     static let Mauve = UIColor(hexString: "76608A")
     static let Taupe = UIColor(hexString: "87794E")
     
+    static let Default = UIColor(hexString: "007AFF")
+    
     /*static let Array = [Lime, Green, Emerald, Teal,
      Cyan, Cobalt, Indigo, Violet,
      Pink, Magenta, Crimson, Red,

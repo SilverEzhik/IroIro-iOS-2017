@@ -158,6 +158,31 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     }
 
     
+    //TODO: CALL FUNCTIONS WHEN COLOR BUTTON NEEDS TO BE HIDDEN/SHOWN
+    //(no color on all notes/untagged)
+    func hideColorButton() {
+        self.navigationItem.rightBarButtonItems = [AddButton]
+    }
+    func showColorButton() {
+        self.navigationItem.rightBarButtonItems = [AddButton, ColorButton]
+    }
+    
+    //temp
+    var colorIsShown : Bool = true
+    
+    @IBOutlet var AddButton: UIBarButtonItem!
+    @IBAction func AddButtonPress(_ sender: Any) {
+        
+        //temp
+        if colorIsShown == true {
+            colorIsShown = false
+            hideColorButton()
+        } else {
+            colorIsShown = true
+            showColorButton()
+        }
+    }
+    
     func setColor(color: UIColor) {
         //TODO: ADJUST THE TAG COLOR HERE.
         //print(color)
@@ -168,6 +193,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     
     var colorPopup : ColorPopup!
     
+    @IBOutlet var ColorButton: UIBarButtonItem!
     @IBAction func ColorButtonPress(_ sender: Any) {
         colorPopup = ColorPopup(callback: setColor(color:))
     }

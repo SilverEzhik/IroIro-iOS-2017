@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -83,12 +84,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wnt-at-TVl">
-                        <barButtonItem key="rightBarButtonItem" image="Paintbrush" id="UeW-Dj-s5L">
-                            <connections>
-                                <action selector="ColorButtonPress:" destination="Hbt-T2-IhQ" id="Lup-vo-iCE"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="6uy-Ek-pgE">
+                                <connections>
+                                    <action selector="AddButtonPress:" destination="Hbt-T2-IhQ" id="HXn-up-l5U"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Paintbrush" id="UeW-Dj-s5L">
+                                <connections>
+                                    <action selector="ColorButtonPress:" destination="Hbt-T2-IhQ" id="Lup-vo-iCE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="AddButton" destination="6uy-Ek-pgE" id="jcI-bW-81e"/>
+                        <outlet property="ColorButton" destination="UeW-Dj-s5L" id="av2-u9-Vzl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFN-3e-EGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,6 +194,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Tags" id="5KD-Rd-Gq6">
                         <barButtonItem key="backBarButtonItem" title="Tags" id="DOv-Vw-8b4"/>
+                        <barButtonItem key="rightBarButtonItem" title="About" id="3fq-13-PpE"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNW-YL-ENz" userLabel="First Responder" sceneMemberID="firstResponder"/>
