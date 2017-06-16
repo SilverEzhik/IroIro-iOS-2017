@@ -19,9 +19,31 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //THIS IS IMPORTANT
+        //With this, even though the tags list is the first view, when the app starts, it will load the list of all notes.
+        //TODO: ENSURE THAT IT LOADS THE ALL NOTES VIEW AND NOT A TAG VIEW
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "NotesListView")
+        self.navigationController?.pushViewController(secondViewController!, animated: false)
+
+        //setup tableView colors
+        self.view.backgroundColor = UIColor.black
+        let bgView = UIView()
+        bgView.backgroundColor = UIColor.black
+        self.tableView.backgroundView = bgView
+        //self.tableView.tableFooterView = bgView
+        
+        
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchBar.sizeToFit()
         self.searchController.hidesNavigationBarDuringPresentation = false
+        
+        //setup search bar colors
+        self.searchController.searchBar.backgroundColor = UIColor.black
+        self.searchController.searchBar.barTintColor = UIColor(hexString: "141414")
+        let textFieldInsideSearchBar = self.searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.white
+        textFieldInsideSearchBar?.backgroundColor = UIColor.black
         
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false

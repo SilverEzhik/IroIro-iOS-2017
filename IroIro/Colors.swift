@@ -34,10 +34,16 @@ class Colors: NSObject {
     static let Mauve = UIColor(hexString: "76608A")
     static let Taupe = UIColor(hexString: "87794E")
     
-    static let Array = [Lime, Green, Emerald, Teal,
-                        Cyan, Cobalt, Indigo, Violet,
-                        Pink, Magenta, Crimson, Red,
-                        Orange, Amber, Yellow, Brown,
+    /*static let Array = [Lime, Green, Emerald, Teal,
+     Cyan, Cobalt, Indigo, Violet,
+     Pink, Magenta, Crimson, Red,
+     Orange, Amber, Yellow, Brown,
+     Olive, Steel, Mauve, Taupe]*/
+    
+    //16 colors which will look nice and square
+    static let Array = [Lime, Green, Teal, Cyan,
+                        Indigo, Violet, Pink, Magenta,
+                        Red, Orange, Amber, Brown,
                         Olive, Steel, Mauve, Taupe]
     
     static func random() -> UIColor {

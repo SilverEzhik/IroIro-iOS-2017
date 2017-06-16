@@ -19,7 +19,7 @@ class NoteCell: UITableViewCell {
         // Initialization code
     }
     
-    Note.content! as NSAttributedString
+    //Note.content! as NSAttributedString
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

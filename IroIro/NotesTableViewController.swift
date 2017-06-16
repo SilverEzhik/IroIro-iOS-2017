@@ -18,9 +18,24 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //setup tableView colors
+        self.view.backgroundColor = UIColor.black
+        let bgView = UIView()
+        bgView.backgroundColor = UIColor.black
+        self.tableView.backgroundView = bgView
+        //self.tableView.tableFooterView = bgView
+        
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchBar.sizeToFit()
         self.searchController.hidesNavigationBarDuringPresentation = false
+        
+        //setup search bar colors
+        self.searchController.searchBar.backgroundColor = UIColor.black
+        self.searchController.searchBar.barTintColor = UIColor(hexString: "141414")
+        let textFieldInsideSearchBar = self.searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.white
+        textFieldInsideSearchBar?.backgroundColor = UIColor.black
         
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
@@ -142,5 +157,20 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
 
+    
+    func setColor(color: UIColor) {
+        //TODO: ADJUST THE TAG COLOR HERE.
+        //print(color)
+        UIView.animate(withDuration: 0.5, animations: {
+            UIApplication.shared.delegate?.window??.tintColor = color
+        })
+    }
+    
+    var colorPopup : ColorPopup!
+    
+    @IBAction func ColorButtonPress(_ sender: Any) {
+        colorPopup = ColorPopup(callback: setColor(color:))
+    }
+    
 
 }
