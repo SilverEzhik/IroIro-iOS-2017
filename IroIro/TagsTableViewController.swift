@@ -7,18 +7,42 @@
 //
 
 import UIKit
+import CoreData
 
-class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
+class TagsTableViewController: UITableViewController, UISearchResultsUpdating, NSFetchedResultsControllerDelegate {
     var tags:[Tag] = []
     
     var searchController : UISearchController!
     var searchResults:[Tag] = []
 
-    
+    //coredata
+    var fetchResultsController : NSFetchedResultsController<Tag>!
+
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //coredata
+        let fetchRequest : NSFetchRequest<Tag> = Tag.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultsController.delegate = self
+            
+            do{
+                try fetchResultsController.performFetch()
+                if let fetchedObjects = fetchResultsController.fetchedObjects {
+                    tags = fetchedObjects
+                }
+            } catch{
+                print(error)
+            }
+        }
+        //coredataend
         
         //THIS IS IMPORTANT
         //With this, even though the tags list is the first view, when the app starts, it will load the list of all notes.
@@ -56,6 +80,40 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    //coredata
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+            
+        }
+        
+        if let fetchedObjects = controller.fetchedObjects {
+            tags = fetchedObjects as! [Tag]
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    //coredataend
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
+class NotesTableViewController: UITableViewController, UISearchResultsUpdating, NSFetchedResultsControllerDelegate {
     var tag :String! = "all"
     
     var notes:[Note] = []
@@ -16,8 +17,32 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     var searchController : UISearchController!
     var searchResults:[Note] = []
     
+    //coredata
+    var fetchResultsController : NSFetchedResultsController<Note>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //coredata
+        let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultsController.delegate = self
+            
+            do{
+                try fetchResultsController.performFetch()
+                if let fetchedObjects = fetchResultsController.fetchedObjects {
+                    notes = fetchedObjects
+                }
+            } catch{
+                print(error)
+            }
+        }
+        //endcoredata
         
         //setup tableView colors
         self.view.backgroundColor = UIColor.black
@@ -48,6 +73,42 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    //coredata
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+            
+        }
+        
+        if let fetchedObjects = controller.fetchedObjects {
+            notes = fetchedObjects as! [Note]
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    //endcoredata
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -97,7 +158,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
             cellItem = notes[indexPath.row]
         }
         cell.name?.text = cellItem.name
-        cell.content.text = (cellItem.content as! NSAttributedString).string
+        cell.content.attributedText = (cellItem.content as! NSAttributedString)
         cell.time.text = String (cellItem.time)
         
         return cell
