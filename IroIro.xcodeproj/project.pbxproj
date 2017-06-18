@@ -19,6 +19,8 @@
 		9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */; };
 		9F5680AC1EDCF48200E1F2B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */; };
 		9F5680AF1EDCF48200E1F2B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5680AD1EDCF48200E1F2B4 /* LaunchScreen.storyboard */; };
+		9F6F45371EF5FEAA006FD130 /* CoreDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6F45351EF5FEAA006FD130 /* CoreDataNote.swift */; };
+		9F6F45381EF5FEAA006FD130 /* CoreDataTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6F45361EF5FEAA006FD130 /* CoreDataTag.swift */; };
 		9FE410771EF1E8CF007A0350 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410721EF1E8CF007A0350 /* CloseButton.swift */; };
 		9FE410781EF1E8CF007A0350 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE410731EF1E8CF007A0350 /* Info.plist */; };
 		9FE410791EF1E8CF007A0350 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410751EF1E8CF007A0350 /* TagListView.swift */; };
@@ -42,6 +44,8 @@
 		9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F5680AE1EDCF48200E1F2B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F5680B01EDCF48200E1F2B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F6F45351EF5FEAA006FD130 /* CoreDataNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataNote.swift; sourceTree = "<group>"; };
+		9F6F45361EF5FEAA006FD130 /* CoreDataTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTag.swift; sourceTree = "<group>"; };
 		9FE410721EF1E8CF007A0350 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9FE410731EF1E8CF007A0350 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FE410741EF1E8CF007A0350 /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 				9F5680AB1EDCF48200E1F2B4 /* Assets.xcassets */,
 				9F5680AD1EDCF48200E1F2B4 /* LaunchScreen.storyboard */,
 				9F5680B01EDCF48200E1F2B4 /* Info.plist */,
+				9F6F45341EF5FE93006FD130 /* Core Data */,
 				9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */,
 				9F2790251EF3A5A500CCF75A /* NoteCell.swift */,
 				9F2790261EF3A5A500CCF75A /* NotesTableViewController.swift */,
@@ -99,6 +104,15 @@
 				9FE4107E1EF1E99D007A0350 /* Colors.swift */,
 			);
 			path = IroIro;
+			sourceTree = "<group>";
+		};
+		9F6F45341EF5FE93006FD130 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				9F6F45351EF5FEAA006FD130 /* CoreDataNote.swift */,
+				9F6F45361EF5FEAA006FD130 /* CoreDataTag.swift */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		9FE410711EF1E8CF007A0350 /* TagListView */ = {
@@ -206,8 +220,10 @@
 				9FE4107F1EF1E99D007A0350 /* Colors.swift in Sources */,
 				9F27902D1EF3A5A500CCF75A /* TagCell.swift in Sources */,
 				9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */,
+				9F6F45381EF5FEAA006FD130 /* CoreDataTag.swift in Sources */,
 				9F27902A1EF3A5A500CCF75A /* NoteCell.swift in Sources */,
 				9F2790241EF3A28300CCF75A /* ColorPopup.swift in Sources */,
+				9F6F45371EF5FEAA006FD130 /* CoreDataNote.swift in Sources */,
 				9FE4107D1EF1E8E9007A0350 /* HashtagParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

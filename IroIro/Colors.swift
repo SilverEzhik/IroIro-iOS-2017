@@ -48,6 +48,19 @@ class Colors: NSObject {
                         Red, Orange, Amber, Brown,
                         Olive, Steel, Mauve, Taupe]
     
+    static func darker(_ color: UIColor) -> UIColor {
+        //TODO: GET THE TAG COLOR DIFFERENTLY?
+        
+        var hue         : CGFloat = 0
+        var saturation  : CGFloat = 0
+        var brightness  : CGFloat = 0
+        var alpha       : CGFloat = 0
+        
+        color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: max(0, brightness - 0.2), alpha: alpha)
+    }
+    
     static func random() -> UIColor {
         return Array[Int(arc4random_uniform(UInt32(Array.count)))]
     }

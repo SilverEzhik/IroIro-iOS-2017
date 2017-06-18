@@ -11,7 +11,7 @@ import UIKit
 class TagCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var count: UILabel!
-    var color:String!
+    var color:UIColor!
     
     override func awakeFromNib() {
         super.awakeFromNib()

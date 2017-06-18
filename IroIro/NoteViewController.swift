@@ -341,17 +341,9 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         }
         actionSheetController.addAction(deleteActionButton)
         
-        //TODO: GET THE TAG COLOR DIFFERENTLY?
-        
         let firstTagColor = tagList.tagViews[0].backgroundColor
-        var hue         : CGFloat = 0
-        var saturation  : CGFloat = 0
-        var brightness  : CGFloat = 0
-        var alpha       : CGFloat = 0
         
-        firstTagColor?.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        
-        actionSheetController.view.tintColor = UIColor(hue: hue, saturation: saturation, brightness: max(0, brightness - 0.2), alpha: alpha)
+        actionSheetController.view.tintColor = Colors.darker(firstTagColor!)
         
         self.present(actionSheetController, animated: true, completion: nil)
         
