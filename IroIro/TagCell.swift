@@ -16,6 +16,8 @@ class TagCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        name.textColor = color
+        count.color = Colors.darker(color)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

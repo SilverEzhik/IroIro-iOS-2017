@@ -13,10 +13,26 @@ class NoteCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var time: UILabel!
+    @IBOutlet var tags: TagListView!
+    
+    var note: Note!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let noteColor = ((note.tags?.allObjects[0] as! Tag).color as! UIColor) ?? UIColor.white
+        
+        name.text = note.name
+        content.text = (note.content as! NSAttributedString).string
+        time.text = timeAgoSinceDate(date: ), numericDates: <#T##Bool#>)
+        
+        name.textColor = noteColor
+        content.textColor = noteColor
+        
+        tags.tagBackgroundColor = Colors.darker(noteColor)
+        
+        for tag in note.tags! {
+            tags.addTag("#" + (tag as! Tag).name!)
+        }
     }
     
     //Note.content! as NSAttributedString
