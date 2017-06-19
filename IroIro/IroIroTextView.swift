@@ -17,5 +17,13 @@ class IroIroTextView: UITextView {
         // Drawing code
     }
     */
+    override func paste(_ sender: Any?) {
+        let pasteboard = UIPasteboard.general
+        replace(selectedTextRange!, withText: pasteboard.string ?? "")
+    }
+    override func copy(_ sender: Any?) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = text(in: selectedTextRange!)
+    }
 
 }

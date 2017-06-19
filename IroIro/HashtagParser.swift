@@ -13,6 +13,7 @@ class HashtagParser: NSObject {
     struct doubleRange {
         var nsRange : NSRange
         var swiftRange : Range<String.Index>
+        var tagRange : Range<String.Index>
     }
 
     static func getRanges(_ inputString: String) -> [doubleRange] {
@@ -29,7 +30,9 @@ class HashtagParser: NSObject {
             let swiftRange = inputString.index(inputString.startIndex, offsetBy: range.location) ..< inputString.index(inputString.startIndex, offsetBy: range.location + range.length)
             let nsRange = NSMakeRange(range.location, range.length)
             
-            ranges.append(doubleRange(nsRange: nsRange, swiftRange: swiftRange))
+            let tagRange = inputString.index(inputString.startIndex, offsetBy: range.location + 1) ..< inputString.index(inputString.startIndex, offsetBy: range.location + range.length)
+            
+            ranges.append(doubleRange(nsRange: nsRange, swiftRange: swiftRange, tagRange: tagRange))
             
             //print(testString.substring(with: NSRange(location: range.location, length: range.length)))//r))
             //}

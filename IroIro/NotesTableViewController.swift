@@ -32,23 +32,24 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         if (action == .tag) {
             if (tag?.managedObjectContext == nil) {
                 print("no tag context")
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
+                //self.navigationController?.popViewController(animated: true)
                 //self.dismiss(animated: true, completion: nil)
             }
             if (tag?.notes?.count == 0) {
                 print("tag count = 0")
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
                 //self.dismiss(animated: true, completion: nil)
             }
             if (notes.count == 0) {
                 print("array empty")
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
                 //self.dismiss(animated: true, completion: nil)
             }
         }
         else if (action == .untagged && notes.count == 0) {
             print("nothing left")
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
             //self.dismiss(animated: true, completion: nil)
         }
         print("not empty?")
@@ -57,7 +58,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         checkForEmpty()
         
         //if we are not exiting, setup UI color.
@@ -163,15 +164,15 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         switch type {
         case .insert:
             if let newIndexPath = newIndexPath {
-                tableView.insertRows(at: [newIndexPath], with: .fade)
+                tableView.insertRows(at: [newIndexPath], with: .left)
             }
         case .delete:
             if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.deleteRows(at: [indexPath], with: .left)
             }
         case .update:
             if let indexPath = indexPath {
-                tableView.reloadRows(at: [indexPath], with: .fade)
+                tableView.reloadRows(at: [indexPath], with: .left)
             }
         default:
             tableView.reloadData()
@@ -181,6 +182,8 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         if let fetchedObjects = controller.fetchedObjects {
             notes = fetchedObjects as! [Note]
         }
+        
+        tableView.reloadData()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -239,11 +242,30 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
             cellItem = notes[indexPath.row]
         }
         
-        cell.note = cellItem
+        //cell.note = cellItem
+        
+        cell.name.text = cellItem.name
+        cell.content.text = (cellItem.content as? NSAttributedString)?.string ?? ""
+        cell.time.text = timeAgoSinceDate(date: (cellItem.time as? NSDate) ?? NSDate(), numericDates: false)
+        var cellColor: UIColor
         if(action == .tag) {
-            cell.noteColor = tag?.color as! UIColor
+            cellColor = tag?.color as! UIColor
         }
-        cell.setupCell()
+        else {
+            cellColor = ((notes[indexPath.row].tags?.firstObject as? Tag)?.color as? UIColor) ?? UIColor.white
+        }
+        
+        cell.name.textColor = cellColor
+        cell.content.textColor = cellColor
+        cell.tagListView.tagBackgroundColor = Colors.darker(cellColor)
+        cell.tagListView.textColor = UIColor.white
+        
+        cell.tagListView.removeAllTags()
+        for tag in cellItem.tags ?? [] {
+            cell.tagListView.addTag("#" + ((tag as? Tag)?.name ?? ""))
+        }
+        
+        //cell.setupCell()
         
         //cell.name?.text = cellItem.name
         //cell.content.attributedText = (cellItem.content as! NSAttributedString)
@@ -340,7 +362,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
                 note.name = ""
                 print(note.name!)
                 
-                note.content = NSAttributedString(string: " ")
+                note.content = NSAttributedString(string: " ", attributes: [NSFontAttributeName: UIFont(name: "Helvetica", size: 14)])
                 print((note.content as! NSAttributedString).string)
                 note.time = NSDate()
                 //note.addToTags(CoreDataTag.getTag("test", appDelegate: appDelegate)!)

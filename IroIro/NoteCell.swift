@@ -16,12 +16,14 @@ class NoteCell: UITableViewCell {
     @IBOutlet weak var tagListView: TagListView!
     
     var noteColor: UIColor?
-    var note: Note!
+    //var note: Note!
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
     }
+    
+    /*
     func setupCell() {
         //var noteColor: UIColor
 
@@ -37,11 +39,15 @@ class NoteCell: UITableViewCell {
                     noteColor = UIColor.white
                 } else {
                     noteColor = ((noteTags.firstObject as! Tag).color as! UIColor)
+                    print((noteTags.firstObject as! Tag).name)
                 }
             }
             name.textColor = noteColor
+            print(name.textColor)
             content.textColor = noteColor
+            print(content.textColor)
             time.textColor = Colors.darker(noteColor!)
+            print(time.textColor)
             
             tagListView.tagBackgroundColor = Colors.darker(noteColor!)
             tagListView.textColor = UIColor.white
@@ -59,6 +65,8 @@ class NoteCell: UITableViewCell {
             }
         }
     }
+ */
+    
     //Note.content! as NSAttributedString
 
     override func setSelected(_ selected: Bool, animated: Bool) {

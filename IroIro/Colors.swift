@@ -66,6 +66,7 @@ class Colors: NSObject {
         UIView.animate(withDuration: 0.5, animations: {
             UIApplication.shared.delegate?.window??.tintColor = color
         })
+        print("changed it, i hope")
         return
     }
     

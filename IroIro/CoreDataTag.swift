@@ -76,7 +76,7 @@ class CoreDataTag: NSObject {
         let noteListVC = storyboard.instantiateViewController(withIdentifier: "NotesListView") as! NotesTableViewController
         noteListVC.action = .tag //set it up to show all notes
         noteListVC.tag = tag
-        navigationController.pushViewController(noteListVC, animated: false)
+        navigationController.pushViewController(noteListVC, animated: true)
     }
     
     

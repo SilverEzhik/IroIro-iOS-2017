@@ -22,6 +22,7 @@
 		9F6F45371EF5FEAA006FD130 /* CoreDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6F45351EF5FEAA006FD130 /* CoreDataNote.swift */; };
 		9F6F45381EF5FEAA006FD130 /* CoreDataTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6F45361EF5FEAA006FD130 /* CoreDataTag.swift */; };
 		9F6F453A1EF76226006FD130 /* timeAgoSinceDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6F45391EF76226006FD130 /* timeAgoSinceDate.swift */; };
+		9FBDC5B21EF7F72F00D64A5D /* IroIroTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDC5B11EF7F72F00D64A5D /* IroIroTextView.swift */; };
 		9FE410771EF1E8CF007A0350 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410721EF1E8CF007A0350 /* CloseButton.swift */; };
 		9FE410781EF1E8CF007A0350 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE410731EF1E8CF007A0350 /* Info.plist */; };
 		9FE410791EF1E8CF007A0350 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410751EF1E8CF007A0350 /* TagListView.swift */; };
@@ -48,6 +49,7 @@
 		9F6F45351EF5FEAA006FD130 /* CoreDataNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataNote.swift; sourceTree = "<group>"; };
 		9F6F45361EF5FEAA006FD130 /* CoreDataTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTag.swift; sourceTree = "<group>"; };
 		9F6F45391EF76226006FD130 /* timeAgoSinceDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeAgoSinceDate.swift; sourceTree = "<group>"; };
+		9FBDC5B11EF7F72F00D64A5D /* IroIroTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IroIroTextView.swift; sourceTree = "<group>"; };
 		9FE410721EF1E8CF007A0350 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9FE410731EF1E8CF007A0350 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FE410741EF1E8CF007A0350 /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */,
+				9FBDC5B11EF7F72F00D64A5D /* IroIroTextView.swift */,
 			);
 			name = NoteViewHelpers;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FE4107A1EF1E8CF007A0350 /* TagView.swift in Sources */,
+				9FBDC5B21EF7F72F00D64A5D /* IroIroTextView.swift in Sources */,
 				9F27902B1EF3A5A500CCF75A /* NotesTableViewController.swift in Sources */,
 				9F5680A21EDCF48200E1F2B4 /* AppDelegate.swift in Sources */,
 				9FE410771EF1E8CF007A0350 /* CloseButton.swift in Sources */,

@@ -2,7 +2,7 @@
 //  NoteViewController.swift
 //  IroIro
 //
-//  Created by neoman nouiouat on 6/6/17.
+//  Created by Ezhik
 //  Copyright © 2017 DeAnza. All rights reserved.
 //
 
@@ -27,7 +27,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
     @IBOutlet var tagList: TagListView!
     @IBOutlet var tagInput: UITextField!
 
-    //TODO: ALIGN WITH CORE DATA
+    
     func setTintColor() {
         if (note.tags?.count)! > 0 {
             Colors.setTintColor((note.tags?.firstObject as! Tag).color as! UIColor)
@@ -41,7 +41,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
     //this function will exit the tag view if it is empty
     func checkForEmpty() {
         //pop self if note is gone
-        if (note.managedObjectContext == nil) {
+        if (note == nil || note.managedObjectContext == nil) {
             print("no note context")
             self.navigationController?.popViewController(animated: true)
             print("we are gone bye")
@@ -58,7 +58,10 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         checkForEmpty()
         loadData()
         if (isNewNote == false) {
+            //you want the note
+            let oldTime = note.time
             disableEditing()
+            note.time = oldTime
         }
         else {
             enableEditing()
@@ -71,7 +74,9 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         super.viewWillDisappear(animated)
         unregisterKeyboardNotifications()
         if (note.managedObjectContext != nil) {
-            disableEditing()
+            if isEditing == true {
+                disableEditing()
+            }
             saveData()
         }
     }
@@ -119,6 +124,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             note.name = NoteTitle.text
             note.content = noteOriginal
+            //note.time = NSDate()
             //tags kinda do their own thing tbh
             appDelegate.saveContext()
         }
@@ -161,7 +167,10 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
     
     func addTagView(_ tag: Tag) -> TagView {
         let tagView = tagList.addTag("#" + tag.name!)
+        tagView.selectedBackgroundColor = (tag.color as! UIColor)
+        tagView.highlightedBackgroundColor = (tag.color as! UIColor)
         tagView.backgroundColor = (tag.color as! UIColor)
+        
         tagView.onTap = { void in
             CoreDataTag.showTag(tag, storyboard: self.storyboard!, navigationController: self.navigationController!)
         }
@@ -185,14 +194,14 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         return tagView
     }
     
-    //TAG LONG PRESS HANDLER
-    //func tagLongPressed(_ title: String, tagView: TagView, sender: TagListView) {
     func noteTagLongPress(tag: Tag, tagView: TagView) {
         print("Tag pressed: \(tag.name!)")
-        
+        //tagView.isSelected = false
+        /*
         if (NoteIsEdited == false) {
             return
         }
+         */
         
         // Create the AlertController and add its actions like button in ActionSheet
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -226,7 +235,9 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
             
             self.setTintColor()
             
+            self.note.time = NSDate()
             
+            self.saveData()
             //UIApplication.shared.delegate.window.tintColor = newTag.tagBackgroundColor
             
             
@@ -244,13 +255,17 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
             self.tagList.removeTagView(tagView)
             
             self.setTintColor()
+            
+            self.note.time = NSDate()
+
+            self.saveData()
         }
         actionSheetController.addAction(deleteActionButton)
         
         //avoid db calls? idk lol
         let firstTagColor = tagList.tagViews[0].backgroundColor
         
-        actionSheetController.view.tintColor = Colors.darker(firstTagColor!)
+        actionSheetController.view.tintColor = Colors.darker(self.view.tintColor)
         
         self.present(actionSheetController, animated: true, completion: nil)
         
@@ -276,10 +291,13 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
     func disableEditing() {
         NoteIsEdited = false
         
-        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil);
+        note.time = NSDate()
+        
+    UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil);
         
         //NoteTitle.isEnabled = false
         NoteContent.isEditable = false
+        
         
         AddHashtagAttributes()
         
@@ -306,6 +324,8 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
     //ENABLE EDIT MODE
     func enableEditing() {
         NoteIsEdited = true
+        note.time = NSDate()
+        
         
         //NoteTitle.isEnabled = true
         NoteContent.isEditable = true
@@ -332,9 +352,6 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         })
     }
     
-
-    
-    //TODO: ALIGN THIS WITH CORE DATA
     func addNewTag(_ tagText : String) {
         //tagList.addTag(tagInput.text!)
         if tagText == "" {
@@ -469,13 +486,12 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
             //(NoteContent.attributedText)
 
             for range in HashtagParser.getRanges(content.string) {
-                let tagString = content.string.substring(with: range.swiftRange)
+                let tagString = content.string.substring(with: range.tagRange)
             
                 print(tagString)
             
-                //TODO: IF TAG DOES NOT EXIST RETURN HERE
                 if let tag = CoreDataTag.getTagIfExists(tagString, appDelegate: appDelegate) {
-                    let linkAttributes : [String: Any] = [NSForegroundColorAttributeName: tag.color! , "IroIroTag": tag]
+                    let linkAttributes : [String: Any] = [NSForegroundColorAttributeName: tag.color! , "IroIroTag": tag.name]
                     content.addAttributes(linkAttributes, range: range.nsRange)
             }
         }
@@ -557,6 +573,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         if (isBackspace == -92 && textField.text == "" && tagList.tagViews.count > 1) {
             if (tagList.tagViews[tagList.tagViews.count-2].isSelected == true) {
                 tagList.removeTagView(tagList.tagViews[tagList.tagViews.count-2])
+                note.removeFromTags(note.tags?.lastObject as! Tag)
                 setTintColor()
             }
             else {
@@ -597,15 +614,21 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         }
         
         var range = NSRange()
-        if let tag = textStorage.attribute("IroIroTag",
+        
+        //look it's 6:06 am, i can nest a little
+        if let tagName = textStorage.attribute("IroIroTag",
                                          at: characterIndex,
                                          effectiveRange: &range) {
-            //let tag = (textView.text! as NSString).substring(with: range)
-            print("tag tap")
-            CoreDataTag.showTag(tag as! Tag, storyboard: self.storyboard!, navigationController: self.navigationController!)
-            //print(tag)
-            //goToTag(tag)
-            // do something...
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                if let tag = CoreDataTag.getTagIfExists(tagName as! String, appDelegate: appDelegate) {
+                        //let tag = (textView.text! as NSString).substring(with: range)
+                        print("tag tap")
+                        CoreDataTag.showTag(tag, storyboard: self.storyboard!, navigationController: self.navigationController!)
+                        //print(tag)
+                        //goToTag(tag)
+                        // do something...
+                }
+            }
         }
         else {
             print("Random tap")
