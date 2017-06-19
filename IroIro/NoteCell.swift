@@ -19,11 +19,14 @@ class NoteCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
+    }
+    func setupCell() {
         var noteColor: UIColor
         if note.tags?.count == 0 {
             noteColor = UIColor.white
         } else {
-            noteColor = ((note.tags?.allObjects[0] as! Tag).color as! UIColor)
+            noteColor = ((note.tags?.firstObject as! Tag).color as! UIColor)
         }
         
         name.text = note.name
@@ -40,7 +43,6 @@ class NoteCell: UITableViewCell {
             tags.addTag("#" + (tag as! Tag).name!)
         }
     }
-    
     //Note.content! as NSAttributedString
 
     override func setSelected(_ selected: Bool, animated: Bool) {

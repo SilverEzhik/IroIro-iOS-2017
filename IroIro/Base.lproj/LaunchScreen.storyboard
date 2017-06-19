@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-802" y="375"/>
         </scene>
-        <!--View Controller-->
+        <!--All Notes-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Wnt-e6-Ddl"/>
+                    <navigationItem key="navigationItem" title="All Notes" id="Wnt-e6-Ddl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

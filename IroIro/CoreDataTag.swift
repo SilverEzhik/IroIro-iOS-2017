@@ -63,12 +63,20 @@ class CoreDataTag: NSObject {
         let context = appDelegate.persistentContainer.viewContext
         if let newTag : Tag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: context) as? Tag {
             newTag.name = tag
+            newTag.color = Colors.random()
             //TODO: ADD RANDOM COLOR HERE
             return newTag
         }
         else {
             return nil
         }
+    }
+    
+    static func showTag(_ tag: Tag, storyboard: UIStoryboard, navigationController: UINavigationController) {
+        let noteListVC = storyboard.instantiateViewController(withIdentifier: "NotesListView") as! NotesTableViewController
+        noteListVC.action = .tag //set it up to show all notes
+        noteListVC.tag = tag
+        navigationController.pushViewController(noteListVC, animated: false)
     }
     
     

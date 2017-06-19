@@ -74,6 +74,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
         noteListVC.action = .all //set it up to show all notes
         self.navigationController?.pushViewController(noteListVC, animated: false)
 
+        
         //setup tableView colors
         self.view.backgroundColor = UIColor.black
         let bgView = UIView()

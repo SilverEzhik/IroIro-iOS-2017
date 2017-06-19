@@ -70,9 +70,6 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("trying to disappear")
-        searchController.isActive = false
-        print("we disappeared?")
     }
     
     
@@ -240,6 +237,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         }
         
         cell.note = cellItem
+        cell.setupCell()
         
         //cell.name?.text = cellItem.name
         //cell.content.attributedText = (cellItem.content as! NSAttributedString)
@@ -249,25 +247,49 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     }
 
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return !(searchController.isActive)
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                var itemToDelete : Note
+                
+                let context = appDelegate.persistentContainer.viewContext
+                /*
+                 if searchController.isActive {
+                 itemToDelete = searchResults[indexPath.row]
+                 searchResults.remove(at: indexPath.row)
+                 print("deleted: " + itemToDelete.name!)
+                 
+                 }*/
+                //else {
+                itemToDelete = self.fetchResultsController.object(at: indexPath)
+                //}
+                print("doing the delete")
+                context.delete(itemToDelete)
+                
+                print("saving context")
+                appDelegate.saveContext()
+                
+                print("saved context")
+                //updateSearchResults(for: searchController)
+                //tableView.reloadData()
+                
+                //exit if empty now
+                checkForEmpty()
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -299,6 +321,26 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
                 }
             }
         }
+        else if (segue.identifier == "NewNote") {
+            print("we'll show you a new note view!")
+            let noteVC = segue.destination as! NoteViewController
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                noteVC.note = Note(context: appDelegate.persistentContainer.viewContext)
+                
+                print("This new note is empty!")
+                noteVC.note.name = ""
+                print(noteVC.note.name)
+                noteVC.note.content = NSAttributedString()
+                print((noteVC.note.content as! NSAttributedString).string)
+                
+                print("Yup, empty!")
+                appDelegate.saveContext()
+                
+                noteVC.isNewNote = true
+                print("And now we are off!!")
+            }
+        }
+        searchController.isActive = false
     }
 
     
