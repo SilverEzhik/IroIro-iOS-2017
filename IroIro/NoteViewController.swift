@@ -44,6 +44,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         if (note.managedObjectContext == nil) {
             print("no note context")
             self.navigationController?.popViewController(animated: true)
+            print("we are gone bye")
             //self.dismiss(animated: true, completion: nil)
         }
     }
@@ -52,16 +53,25 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
     //setup keyboard notifications
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("hi this is note view")
         registerKeyboardNotifications()
         checkForEmpty()
         loadData()
+        if (isNewNote == false) {
+            disableEditing()
+        }
+        else {
+            enableEditing()
+            NoteTitle.becomeFirstResponder()
+            isNewNote = false
+        }
         setTintColor()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardNotifications()
-        disableEditing()
-        if (note.managedObjectContext == nil) {
+        if (note.managedObjectContext != nil) {
+            disableEditing()
             saveData()
         }
     }
@@ -102,15 +112,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         //detect taps on note content
         let TapGestureRecognizer : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedTag(sender:)))
         NoteContent.addGestureRecognizer(TapGestureRecognizer)
-    
-        
-        if (isNewNote == false) {
-            disableEditing()
-        }
-        else {
-            enableEditing()
-        }
-        setTintColor()
+
     }
     
     func saveData() {
@@ -127,12 +129,14 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         let whiteNote : NSMutableAttributedString = NSMutableAttributedString()
         whiteNote.append(note.content as! NSAttributedString)
         whiteNote.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSMakeRange(0, whiteNote.string.characters.count))
-        
+        print("made a note")
         //save original note content
         NoteContent.attributedText = whiteNote
+        print("changed the text")
         noteOriginal = NoteContent.attributedText
         
         NoteTitle.text = note.name
+        print("got a title")
         
         setupTags()
     }

@@ -24,25 +24,31 @@ class NoteCell: UITableViewCell {
     }
     func setupCell() {
         //var noteColor: UIColor
-        if noteColor == nil {
-            if note.tags?.count == 0 {
-                noteColor = UIColor.white
-            } else {
-                noteColor = ((note.tags?.firstObject as! Tag).color as! UIColor)
-            }
-        }
+
         name.text = note.name ?? ""
         content.text = (note.content as! NSAttributedString).string
         time.text = timeAgoSinceDate(date: note.time as! NSDate, numericDates: false)
-        name.textColor = noteColor
-        content.textColor = noteColor
-        time.textColor = Colors.darker(noteColor!)
-
-        tagListView.tagBackgroundColor = Colors.darker(noteColor!)
-        tagListView.textColor = UIColor.white
-        //print("colors set")
+        
         tagListView.removeAllTags()
+        
         if let noteTags = note.tags {
+            if noteColor == nil {
+                if noteTags.count == 0 {
+                    noteColor = UIColor.white
+                } else {
+                    noteColor = ((noteTags.firstObject as! Tag).color as! UIColor)
+                }
+            }
+            name.textColor = noteColor
+            content.textColor = noteColor
+            time.textColor = Colors.darker(noteColor!)
+            
+            tagListView.tagBackgroundColor = Colors.darker(noteColor!)
+            tagListView.textColor = UIColor.white
+            
+            if noteTags.count != 0 {
+                print((note.tags?.firstObject as! Tag).color as! UIColor)
+            }
             //print("apparently there are tags")
             print(noteTags.count)
             for tag in noteTags {

@@ -27,6 +27,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     
     //this function will exit the tag view if it is empty
     func checkForEmpty() {
+        print("hi this is note list")
         //pop self if tag is gone or empty
         if (action == .tag) {
             if (tag?.managedObjectContext == nil) {
@@ -74,8 +75,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tableView.reloadData()
-        checkForEmpty()
+        //self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -337,13 +337,14 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
                 let note = Note(context: context)
                 
                 print("This new note is empty!")
-                note.name = "Test"
+                note.name = ""
                 print(note.name!)
-                note.content = NSAttributedString(string: "awoo")
+                
+                note.content = NSAttributedString(string: " ")
                 print((note.content as! NSAttributedString).string)
                 note.time = NSDate()
-                note.addToTags(CoreDataTag.getTag("test", appDelegate: appDelegate)!)
-                note.addToTags(CoreDataTag.getTag("yahallo", appDelegate: appDelegate)!)
+                //note.addToTags(CoreDataTag.getTag("test", appDelegate: appDelegate)!)
+                //note.addToTags(CoreDataTag.getTag("yahallo", appDelegate: appDelegate)!)
                 
                 print(CoreDataNote.getTotalNoteCount(appDelegate: appDelegate))
                 appDelegate.saveContext()

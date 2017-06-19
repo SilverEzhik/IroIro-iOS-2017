@@ -1161,6 +1161,7 @@ Some text to fill the space:
                             <constraint firstItem="lSg-71-3ww" firstAttribute="leading" secondItem="OY1-o2-k0f" secondAttribute="leadingMargin" constant="-16" id="IJN-rE-fTa"/>
                             <constraint firstItem="lSg-71-3ww" firstAttribute="height" secondItem="OY1-o2-k0f" secondAttribute="height" id="VXJ-8W-5kM"/>
                             <constraint firstItem="lSg-71-3ww" firstAttribute="bottom" secondItem="W81-PK-NMM" secondAttribute="top" id="WZd-vk-l2Q"/>
+                            <constraint firstItem="d6v-cd-NOB" firstAttribute="height" relation="greaterThanOrEqual" secondItem="OY1-o2-k0f" secondAttribute="height" constant="-100" id="n58-r3-Y3n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jf6-Ha-5R8">
