@@ -379,10 +379,15 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
             
             _ = insertTagView(tag!, at: tagLocation)//tagList.insertTag("#" + tagText, at: tagLocation)
             //newTag.tagBackgroundColor = tag?.color as! UIColor
+            
+            //waste some time
+            setTintColor()
         }
         //newTag.selectedBorderColor = UIColor.red
         //newTag.selectedTextColor = UIColor.red
         //newTag.selectedBackgroundColor = UIColor.red
+        
+        
         //clear input box
         tagInput.text = ""
     }
