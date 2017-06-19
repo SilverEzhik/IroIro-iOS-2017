@@ -176,17 +176,24 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        if editingStyle == .delete { //still need to add in deleting it from core data
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if searchController.isActive{
+                searchResults.remove(at: indexPath.row) //not really necessary but will let them skim down on search results they find as clutter
+            }
+            else{
+                tags.remove(at: indexPath.row)
+               
+            }
+            
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.tableView.reloadData()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
