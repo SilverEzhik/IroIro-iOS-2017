@@ -44,6 +44,24 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //try this first?
+        /*
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let note = Note(context: context)
+            
+            print("This new note is empty!")
+            //note.name = ""
+            //print(note.name!)
+            //note.content = NSAttributedString()
+            //print((note.content as! NSAttributedString).string)
+            
+            print(CoreDataNote.getTotalNoteCount(appDelegate: appDelegate))
+            appDelegate.saveContext()
+            print("so we are here now.")
+        }*/
+        
         /*
         //coredata
         let fetchRequest : NSFetchRequest<Tag> = Tag.fetchRequest()
@@ -70,10 +88,10 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
         //THIS IS IMPORTANT
         //With this, even though the tags list is the first view, when the app starts, it will load the list of all notes.
         //TODO: ENSURE THAT IT LOADS THE ALL NOTES VIEW AND NOT A TAG VIEW
-        let noteListVC = self.storyboard?.instantiateViewController(withIdentifier: "NotesListView") as! NotesTableViewController
+        /*let noteListVC = self.storyboard?.instantiateViewController(withIdentifier: "NotesListView") as! NotesTableViewController
         noteListVC.action = .all //set it up to show all notes
         self.navigationController?.pushViewController(noteListVC, animated: false)
-
+        */
         
         //setup tableView colors
         self.view.backgroundColor = UIColor.black

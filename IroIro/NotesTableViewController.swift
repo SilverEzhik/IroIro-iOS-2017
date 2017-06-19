@@ -84,6 +84,8 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         //coredata
         let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+        //let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         //setup showing correct tag
@@ -105,6 +107,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             let context = appDelegate.persistentContainer.viewContext
+            
             fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultsController.delegate = self
             
@@ -322,20 +325,27 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
             }
         }
         else if (segue.identifier == "NewNote") {
+            
             print("we'll show you a new note view!")
             let noteVC = segue.destination as! NoteViewController
             if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-                noteVC.note = Note(context: appDelegate.persistentContainer.viewContext)
+                let context = appDelegate.persistentContainer.viewContext
+                
+                let note = Note(context: context)
                 
                 print("This new note is empty!")
-                noteVC.note.name = ""
-                print(noteVC.note.name)
-                noteVC.note.content = NSAttributedString()
-                print((noteVC.note.content as! NSAttributedString).string)
+                note.name = "Test"
+                print(note.name!)
+                note.content = NSAttributedString(string: "awoo")
+                print((note.content as! NSAttributedString).string)
+                note.time = NSDate()
+                note.addToTags(CoreDataTag.getTag("test", appDelegate: appDelegate)!)
+                note.addToTags(CoreDataTag.getTag("yahallo", appDelegate: appDelegate)!)
                 
-                print("Yup, empty!")
+                print(CoreDataNote.getTotalNoteCount(appDelegate: appDelegate))
                 appDelegate.saveContext()
                 
+                noteVC.note = note
                 noteVC.isNewNote = true
                 print("And now we are off!!")
             }

@@ -29,19 +29,34 @@ class NoteCell: UITableViewCell {
             noteColor = ((note.tags?.firstObject as! Tag).color as! UIColor)
         }
         
-        name.text = note.name
+        print("setting up cell?")
+        name.text = note.name ?? ""
+        print(name.text)
         content.text = (note.content as! NSAttributedString).string
+        print("setting up time")
         time.text = timeAgoSinceDate(date: note.time as! NSDate, numericDates: false)
-        
+        print("time set")
         name.textColor = noteColor
         content.textColor = noteColor
         time.textColor = Colors.darker(noteColor)
-        tags.tagBackgroundColor = Colors.darker(noteColor)
-        tags.textColor = UIColor.white
-        
-        for tag in note.tags! {
-            tags.addTag("#" + (tag as! Tag).name!)
+        print("got you color")
+        print("colors set")
+        if let noteTags = note.tags {
+            print("apparently there are tags")
+            print(noteTags.count)
+            for tag in noteTags {
+                let tagView = tags.addTag("#" + ((tag as! Tag).name!))
+                print(tagView.currentTitle)
+                tagView.backgroundColor = Colors.darker(noteColor)
+                tagView.textColor = UIColor.white
+            }
         }
+        //tags.tagBackgroundColor = Colors.darker(noteColor)
+        //tags.tagBackgroundColor = noteColor
+        //tags.textColor = UIColor.white
+        
+        print("setup cell")
+        
     }
     //Note.content! as NSAttributedString
 
