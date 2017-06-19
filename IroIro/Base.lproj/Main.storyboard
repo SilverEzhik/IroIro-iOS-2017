@@ -23,7 +23,7 @@
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="72" id="FqN-kn-y8I" customClass="NoteCell" customModule="IroIro" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FqN-kn-y8I" id="e13-xR-ZYo">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
@@ -74,6 +74,7 @@
                                 <connections>
                                     <outlet property="content" destination="zHO-TH-s0f" id="o1P-AB-M5K"/>
                                     <outlet property="name" destination="5db-Iq-Mzq" id="sqC-W2-f0a"/>
+                                    <outlet property="tagListView" destination="xNj-To-BgD" id="U9z-9b-agD"/>
                                     <outlet property="time" destination="tqe-7q-jwQ" id="fOw-Aj-27l"/>
                                     <segue destination="IKs-Zs-Itv" kind="show" identifier="ShowNote" id="1bc-4a-z5x"/>
                                 </connections>
@@ -1225,7 +1226,7 @@ Some text to fill the space:
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTH-mG-BER">
                                 <rect key="frame" x="24" y="176" width="327" height="425"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">IroIro allows its users to sort and search saved notes through color coded tags for better organization and sleekness. Through IroIro you can save notes the exact way you typed them! (Bold/Italic/Other Languages are all supported). IroIro also searches for your tags as you type them. Overall IroIro is an app that would make your life simpler, neater, and easier.
+                                <string key="text">IroIro allows its users to sort and search saved notes through color coded tags for better organization and sleekness. Through IroIro you can save notes the exact way you typed them! (Bold/Italic/Other Languages are all supported). IroIro also searches for your tags as you type them. Overall IroIro is an app that would make your life simpler, neater, and easier.
 
 IroIro was developed by a team of 4 college students studying iOS development in De Anza College in the San Francisco Bay Area. The application was developed as a part of their final project based on the lessons and concepts they were thought in class.
 
@@ -1235,7 +1236,7 @@ Neoman Nouiouat
 Meta Novitia
 Garry Fanata
 
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>

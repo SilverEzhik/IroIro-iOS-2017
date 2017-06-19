@@ -240,6 +240,9 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         }
         
         cell.note = cellItem
+        if(action == .tag) {
+            cell.noteColor = tag?.color as! UIColor
+        }
         cell.setupCell()
         
         //cell.name?.text = cellItem.name
@@ -384,6 +387,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         //print(color)
         tag?.color = color
         Colors.setTintColor(color)
+        tableView.reloadData()
     }
     
     var colorPopup : ColorPopup!
