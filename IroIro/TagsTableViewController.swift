@@ -22,7 +22,6 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //coredata
         let fetchRequest : NSFetchRequest<Tag> = Tag.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -163,7 +162,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
              cellItem = tags[indexPath.row]
         }
         cell.name?.text = cellItem.name
-        cell.color = String(describing: cellItem.color as! UIColor)
+        cell.color = cellItem.color as! UIColor
         cell.count.text = String(describing: cellItem.notes?.count)
 
         return cell

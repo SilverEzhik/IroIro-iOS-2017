@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class NotesTableViewController: UITableViewController, UISearchResultsUpdating, NSFetchedResultsControllerDelegate {
-    var tag :String! = "all"
+    var tag :String! = "all" //when they choose a tag in tag TVC it changes this to the tag name then we use that to decide which notes to show
     
     var notes:[Note] = []
     

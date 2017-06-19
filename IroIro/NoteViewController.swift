@@ -197,7 +197,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         print("tagloc: " + String(tagLocation))
         
         let newTag = tagList.insertTag("#" + tagText, at: tagLocation)
-        newTag.tagBackgroundColor = getTagByName(tagText).color as! UIColor
+        newTag.tagBackgroundColor = getTagByName(tagText).color! as! UIColor
         //newTag.selectedBorderColor = UIColor.red
         //newTag.selectedTextColor = UIColor.red
         //newTag.selectedBackgroundColor = UIColor.red
@@ -281,8 +281,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
             
             //TODO: IF TAG DOES NOT EXIST RETURN HERE
             
-            let linkAttributes : [String: Any] = [NSForegroundColorAttributeName: getTagByName(tagString).color as! UIColor,
-                                                  "IroIroTag": tagString]
+            let linkAttributes : [String: Any] = [NSForegroundColorAttributeName: (getTagByName(tagString).color)! , "IroIroTag": tagString]
             
             content.addAttributes(linkAttributes, range: range.nsRange)
             
@@ -319,7 +318,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
             var swiftStringsAreAnnoying = title
             swiftStringsAreAnnoying.remove(at: swiftStringsAreAnnoying.startIndex)
             
-            newTag.tagBackgroundColor = self.getTagByName(swiftStringsAreAnnoying).color as! UIColor
+            newTag.tagBackgroundColor =  self.getTagByName(swiftStringsAreAnnoying).color as! UIColor
             newTag.selectedBackgroundColor = UIColor.red
             
             self.setTintColor()
