@@ -89,6 +89,7 @@
                             <barButtonItem systemItem="add" id="6uy-Ek-pgE">
                                 <connections>
                                     <action selector="AddButtonPress:" destination="Hbt-T2-IhQ" id="HXn-up-l5U"/>
+                                    <segue destination="IKs-Zs-Itv" kind="show" identifier="newNote" id="ewP-AW-UUi"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Paintbrush" id="UeW-Dj-s5L">
@@ -1188,4 +1189,7 @@ Some text to fill the space:
     <resources>
         <image name="Paintbrush" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ewP-AW-UUi"/>
+    </inferredMetricsTieBreakers>
 </document>
