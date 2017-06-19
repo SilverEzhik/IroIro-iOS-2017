@@ -9,15 +9,21 @@
 import UIKit
 
 class TagCell: UITableViewCell {
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var count: UILabel!
-    var color:UIColor!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var count: UILabel!
+    
+    var color: UIColor!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //setupCell()
+    }
+    
+    func setupCell() {
         name.textColor = color
-        count.color = Colors.darker(color)
+        count.textColor = Colors.darker(color)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

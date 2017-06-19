@@ -96,14 +96,9 @@
 				9F5680B01EDCF48200E1F2B4 /* Info.plist */,
 				9F6F45341EF5FE93006FD130 /* Core Data */,
 				9F5680A81EDCF48200E1F2B4 /* IroIro.xcdatamodeld */,
-				9F2790251EF3A5A500CCF75A /* NoteCell.swift */,
-				9F2790261EF3A5A500CCF75A /* NotesTableViewController.swift */,
-				9F2790271EF3A5A500CCF75A /* NoteViewController.swift */,
-				9F2790281EF3A5A500CCF75A /* TagCell.swift */,
-				9F2790291EF3A5A500CCF75A /* TagsTableViewController.swift */,
-				732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */,
-				9F2790231EF3A28300CCF75A /* ColorPopup.swift */,
-				9FE4107E1EF1E99D007A0350 /* Colors.swift */,
+				9F6F453B1EF77A4B006FD130 /* Table Cells */,
+				9F6F453C1EF77A57006FD130 /* View Controllers */,
+				9F6F453D1EF77A64006FD130 /* Color Helpers */,
 				9F6F45391EF76226006FD130 /* timeAgoSinceDate.swift */,
 			);
 			path = IroIro;
@@ -116,6 +111,35 @@
 				9F6F45361EF5FEAA006FD130 /* CoreDataTag.swift */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		9F6F453B1EF77A4B006FD130 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9F2790251EF3A5A500CCF75A /* NoteCell.swift */,
+				9F2790281EF3A5A500CCF75A /* TagCell.swift */,
+			);
+			name = "Table Cells";
+			sourceTree = "<group>";
+		};
+		9F6F453C1EF77A57006FD130 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F2790291EF3A5A500CCF75A /* TagsTableViewController.swift */,
+				9F2790261EF3A5A500CCF75A /* NotesTableViewController.swift */,
+				9F2790271EF3A5A500CCF75A /* NoteViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9F6F453D1EF77A64006FD130 /* Color Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */,
+				9F2790231EF3A28300CCF75A /* ColorPopup.swift */,
+				9FE4107E1EF1E99D007A0350 /* Colors.swift */,
+			);
+			name = "Color Helpers";
 			sourceTree = "<group>";
 		};
 		9FE410711EF1E8CF007A0350 /* TagListView */ = {

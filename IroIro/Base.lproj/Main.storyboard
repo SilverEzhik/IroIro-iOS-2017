@@ -23,10 +23,10 @@
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="72" id="FqN-kn-y8I" customClass="NoteCell" customModule="IroIro" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FqN-kn-y8I" id="e13-xR-ZYo">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNj-To-BgD" customClass="TagListView" customModule="IroIro">
@@ -70,12 +70,12 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="content" destination="zHO-TH-s0f" id="o1P-AB-M5K"/>
                                     <outlet property="name" destination="5db-Iq-Mzq" id="sqC-W2-f0a"/>
                                     <outlet property="time" destination="tqe-7q-jwQ" id="fOw-Aj-27l"/>
-                                    <segue destination="IKs-Zs-Itv" kind="show" id="1bc-4a-z5x"/>
+                                    <segue destination="IKs-Zs-Itv" kind="show" identifier="ShowNote" id="1bc-4a-z5x"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -89,7 +89,7 @@
                             <barButtonItem systemItem="add" id="6uy-Ek-pgE">
                                 <connections>
                                     <action selector="AddButtonPress:" destination="Hbt-T2-IhQ" id="HXn-up-l5U"/>
-                                    <segue destination="IKs-Zs-Itv" kind="show" identifier="newNote" id="ewP-AW-UUi"/>
+                                    <segue destination="IKs-Zs-Itv" kind="show" identifier="NewNote" id="ewP-AW-UUi"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Paintbrush" id="UeW-Dj-s5L">
@@ -112,13 +112,12 @@
         <scene sceneID="gEk-Fx-VEr">
             <objects>
                 <tableViewController title="Tags" id="tZB-jM-xSk" customClass="TagsTableViewController" customModule="IroIro" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="2EU-u6-EVW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="72" sectionHeaderHeight="18" sectionFooterHeight="18" id="2EU-u6-EVW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <inset key="separatorInset" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagCell" rowHeight="72" id="CQ9-TL-DYM" customClass="TagCell" customModule="IroIro" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagCell" focusStyle="custom" rowHeight="72" id="CQ9-TL-DYM" customClass="TagCell" customModule="IroIro" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CQ9-TL-DYM" id="AfA-G8-xmU">
@@ -126,14 +125,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tag Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ew5-Cf-DKZ">
-                                            <rect key="frame" x="8" y="12" width="359" height="21"/>
+                                            <rect key="frame" x="8" y="13" width="359" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEA-OT-9Lc">
-                                            <rect key="frame" x="9" y="41" width="359" height="18"/>
+                                            <rect key="frame" x="9" y="42" width="359" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,8 +140,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="count" destination="hEA-OT-9Lc" id="MnH-w7-s1F"/>
+                                    <outlet property="name" destination="ew5-Cf-DKZ" id="tPx-3b-eLf"/>
                                     <segue destination="Hbt-T2-IhQ" kind="show" identifier="showTaggedNotes" id="fc6-hf-OT1"/>
                                 </connections>
                             </tableViewCell>
@@ -196,10 +197,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSg-71-3ww">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSg-71-3ww">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dP8-Je-gi2">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dP8-Je-gi2">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="944"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Note title" placeholder="Note title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5iz-bc-M1c">
@@ -1140,6 +1141,7 @@ Some text to fill the space:
                                             <constraint firstItem="5iz-bc-M1c" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" constant="-10" id="81x-yD-hjg"/>
                                             <constraint firstItem="UFJ-eP-Pu1" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" constant="-10" id="YB8-ef-lvp"/>
                                             <constraint firstItem="d6v-cd-NOB" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" id="c7g-28-bTf"/>
+                                            <constraint firstAttribute="height" constant="944" id="z18-2R-9WJ"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -1278,6 +1280,6 @@ Paintbrush Icon: http://megaicons.net/iconspack-60/1151/</string>
         <image name="Paintbrush" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ewP-AW-UUi"/>
+        <segue reference="1bc-4a-z5x"/>
     </inferredMetricsTieBreakers>
 </document>

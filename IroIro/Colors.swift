@@ -61,6 +61,14 @@ class Colors: NSObject {
         return UIColor(hue: hue, saturation: saturation, brightness: max(0, brightness - 0.2), alpha: alpha)
     }
     
+    static func setTintColor(_ color: UIColor) {
+        print("trying to change ui color")
+        UIView.animate(withDuration: 0.5, animations: {
+            UIApplication.shared.delegate?.window??.tintColor = color
+        })
+        return
+    }
+    
     static func random() -> UIColor {
         return Array[Int(arc4random_uniform(UInt32(Array.count)))]
     }

@@ -19,16 +19,22 @@ class NoteCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let noteColor = ((note.tags?.allObjects[0] as! Tag).color as! UIColor) ?? UIColor.white
+        var noteColor: UIColor
+        if note.tags?.count == 0 {
+            noteColor = UIColor.white
+        } else {
+            noteColor = ((note.tags?.allObjects[0] as! Tag).color as! UIColor)
+        }
         
         name.text = note.name
         content.text = (note.content as! NSAttributedString).string
-        time.text = timeAgoSinceDate(date: ), numericDates: <#T##Bool#>)
+        time.text = timeAgoSinceDate(date: note.time as! NSDate, numericDates: false)
         
         name.textColor = noteColor
         content.textColor = noteColor
-        
+        time.textColor = Colors.darker(noteColor)
         tags.tagBackgroundColor = Colors.darker(noteColor)
+        tags.textColor = UIColor.white
         
         for tag in note.tags! {
             tags.addTag("#" + (tag as! Tag).name!)

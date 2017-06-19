@@ -10,23 +10,101 @@ import UIKit
 import CoreData
 
 class NotesTableViewController: UITableViewController, UISearchResultsUpdating, NSFetchedResultsControllerDelegate {
-    var tag :String! = "all" //when they choose a tag in tag TVC it changes this to the tag name then we use that to decide which notes to show
+    //var tag :String! = "all" //when they choose a tag in tag TVC it changes this to the tag name then we use that to decide which notes to show
     
-    var notes:[Note] = []
+    //select action which we will show
+    var action: noteListCase! //handle "all", "untagged", "tag"
+    //if we are showing a tag, this will need to be not nil
+    var tag: Tag?
     
-    var searchController : UISearchController!
-    var searchResults:[Note] = []
+    var notes: [Note] = []
+    
+    var searchController: UISearchController!
+    var searchResults: [Note] = []
     
     //coredata
     var fetchResultsController : NSFetchedResultsController<Note>!
+    
+    //this function will exit the tag view if it is empty
+    func checkForEmpty() {
+        //pop self if tag is gone or empty
+        if (action == .tag) {
+            if (tag?.managedObjectContext == nil) {
+                print("no tag context")
+                self.navigationController?.popViewController(animated: true)
+                //self.dismiss(animated: true, completion: nil)
+            }
+            if (tag?.notes?.count == 0) {
+                print("tag count = 0")
+                self.navigationController?.popViewController(animated: true)
+                //self.dismiss(animated: true, completion: nil)
+            }
+            if (notes.count == 0) {
+                print("array empty")
+                self.navigationController?.popViewController(animated: true)
+                //self.dismiss(animated: true, completion: nil)
+            }
+        }
+        else if (action == .untagged && notes.count == 0) {
+            print("nothing left")
+            self.navigationController?.popViewController(animated: true)
+            //self.dismiss(animated: true, completion: nil)
+        }
+        print("not empty?")
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        checkForEmpty()
+        
+        //if we are not exiting, setup UI color.
+        if action == .tag {
+            Colors.setTintColor(tag?.color as! UIColor)
+        } else {
+            Colors.setTintColor(Colors.Default)
+        }
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("trying to disappear")
+        searchController.isActive = false
+        print("we disappeared?")
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        checkForEmpty()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //coredata
         let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "time", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        //setup showing correct tag
+        if (action == .all) {
+            self.title = "All Notes"
+            hideColorButton()
+            //show all
+        }
+        else if (action == .untagged) {
+            self.title = "Untagged"
+            hideColorButton()
+            fetchRequest.predicate = NSPredicate(format: "tags.@count == 0")
+        }
+        else if (action == .tag) {
+            self.title = "#" + (tag?.name)!
+            showColorButton()
+            fetchRequest.predicate = NSPredicate(format: "ANY tags.name == %@", (tag?.name)!)
+        }
         
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             let context = appDelegate.persistentContainer.viewContext
@@ -49,6 +127,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         let bgView = UIView()
         bgView.backgroundColor = UIColor.black
         self.tableView.backgroundView = bgView
+        self.tableView.separatorColor = UIColor(hexString: "333333")
         //self.tableView.tableFooterView = bgView
         
         self.searchController = UISearchController(searchResultsController: nil)
@@ -140,26 +219,31 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if searchController.isActive{
+        if searchController.isActive {
             return searchResults.count
         }
-        return notes.count
+        else {
+            return notes.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as! NoteCell
-        var cellItem:Note
+        var cellItem: Note
         
-        if searchController.isActive{
+        if searchController.isActive {
             cellItem = searchResults[indexPath.row]
         }
-        else{
+        else {
             cellItem = notes[indexPath.row]
         }
-        cell.name?.text = cellItem.name
-        cell.content.attributedText = (cellItem.content as! NSAttributedString)
-        cell.time.text = String (cellItem.time)
+        
+        cell.note = cellItem
+        
+        //cell.name?.text = cellItem.name
+        //cell.content.attributedText = (cellItem.content as! NSAttributedString)
+        //cell.time.text = String (cellItem.time)
         
         return cell
     }
@@ -204,12 +288,11 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showNote") {
+        if (segue.identifier == "ShowNote") {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let noteVC = segue.destination as! NoteViewController
                 if searchController.isActive {
                     noteVC.note = searchResults[indexPath.row]
-                    
                 }
                 else {
                     noteVC.note = notes[indexPath.row]
@@ -247,9 +330,8 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     func setColor(color: UIColor) {
         //TODO: ADJUST THE TAG COLOR HERE.
         //print(color)
-        UIView.animate(withDuration: 0.5, animations: {
-            UIApplication.shared.delegate?.window??.tintColor = color
-        })
+        tag?.color = color
+        Colors.setTintColor(color)
     }
     
     var colorPopup : ColorPopup!

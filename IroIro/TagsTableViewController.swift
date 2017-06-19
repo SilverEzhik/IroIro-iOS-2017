@@ -9,19 +9,42 @@
 import UIKit
 import CoreData
 
-class TagsTableViewController: UITableViewController, UISearchResultsUpdating, NSFetchedResultsControllerDelegate {
-    var tags:[Tag] = []
+class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
+    
+    //var tags:[Tag] = []
+    //Because we will need to show two extra elements and handle tag cleanup here, i am not using the fetch results controller, and the array we use will be of a different type than Tag
+    var tagsArray: [tagCellElement] = []
     
     var searchController : UISearchController!
-    var searchResults:[Tag] = []
+    var searchResults: [tagCellElement] = []
 
     //coredata
-    var fetchResultsController : NSFetchedResultsController<Tag>!
+    //var fetchResultsController : NSFetchedResultsController<Tag>!
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //change color back to the system one
+        Colors.setTintColor(Colors.Default)
+        
+        //re-setup the array every time we come back to the tags view
+        setupTagsList()
+        
+        print("We finished that function")
+        
+    }
+    
+    //close the searchbar when the view is no longer visible
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchController.isActive = false
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*
         //coredata
         let fetchRequest : NSFetchRequest<Tag> = Tag.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -42,18 +65,21 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
             }
         }
         //coredataend
+         */
         
         //THIS IS IMPORTANT
         //With this, even though the tags list is the first view, when the app starts, it will load the list of all notes.
         //TODO: ENSURE THAT IT LOADS THE ALL NOTES VIEW AND NOT A TAG VIEW
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "NotesListView")
-        self.navigationController?.pushViewController(secondViewController!, animated: false)
+        let noteListVC = self.storyboard?.instantiateViewController(withIdentifier: "NotesListView") as! NotesTableViewController
+        noteListVC.action = .all //set it up to show all notes
+        self.navigationController?.pushViewController(noteListVC, animated: false)
 
         //setup tableView colors
         self.view.backgroundColor = UIColor.black
         let bgView = UIView()
         bgView.backgroundColor = UIColor.black
         self.tableView.backgroundView = bgView
+        self.tableView.separatorColor = UIColor(hexString: "333333")
         //self.tableView.tableFooterView = bgView
         
         
@@ -80,39 +106,58 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    //coredata
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let newIndexPath = newIndexPath {
-                tableView.insertRows(at: [newIndexPath], with: .fade)
-            }
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        case .update:
-            if let indexPath = indexPath {
-                tableView.reloadRows(at: [indexPath], with: .fade)
-            }
-        default:
-            tableView.reloadData()
-            
-        }
+    func setupTagsList() {
+        //clear the array for upcoming evils
+        tagsArray = []
+        print("time to get to work")
         
-        if let fetchedObjects = controller.fetchedObjects {
-            tags = fetchedObjects as! [Tag]
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            
+            //first append the all notes item
+            tagsArray.append(tagCellElement(name: "All Notes", action: .all, count: CoreDataNote.getTotalNoteCount(appDelegate: appDelegate), color: UIColor.white, tag: nil))
+            
+            //next find if there are any untagged notes, if there are, append the item
+            let untaggedCount = CoreDataNote.getUntaggedNoteCount(appDelegate: appDelegate)
+            print("Untagged: " + String(untaggedCount))
+            if untaggedCount > 0 {
+                tagsArray.append(tagCellElement(name: "Untagged", action: .untagged, count: CoreDataNote.getUntaggedNoteCount(appDelegate: appDelegate), color: UIColor.white, tag: nil))
+            }
+            
+            //setup core data fetch request
+            let fetchRequest : NSFetchRequest<Tag> = Tag.fetchRequest()
+            do {
+                //get all tags
+                let fetchedTags = try context.fetch(fetchRequest)
+                //sort by note count in tag
+                let sortedTags = fetchedTags.sorted(by: {
+                    ($0.notes?.count)! > ($1.notes?.count)! //descending order
+                })
+                print("tags fetched: " + String(sortedTags.count))
+                
+                //now that we have sorted tags, deal with them
+                for tag in sortedTags {
+                    if (tag.notes?.count != 0) { //only show tag if it has notes
+                        tagsArray.append(tagCellElement(name: "#" + tag.name!, action: .tag, count: (tag.notes?.count)!, color: tag.color as! UIColor, tag: tag))
+                    }
+                    else {
+                        context.delete(tag) //delete tag if there are no notes in it
+                    }
+                }
+                print("we're done with tags")
+            }
+            catch {
+                print(error)
+            }
+            tableView.reloadData()
         }
     }
-    
+
+    /*
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    //coredataend
+    //coredataend*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -122,9 +167,15 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
     //MARK: search stuff
     
     func filterContentForSearchText(searchText: String) { //not sure why it gives error here
-        searchResults = tags.filter({(tag:Tag)->Bool in
-            let match = tag.name?.range(of: searchText, options: String.CompareOptions.caseInsensitive)
-            return match != nil
+        searchResults = tagsArray.filter({(tagCellItem: tagCellElement)->Bool in
+            //only search tags
+            if (tagCellItem.action != .tag) {
+                return false
+            }
+            else {
+                let match = tagCellItem.name.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+                return match != nil
+            }
         })
     }
     
@@ -144,27 +195,39 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if searchController.isActive{
+        print("get cell count")
+        if searchController.isActive {
             return searchResults.count
         }
-        return tags.count
+        else {
+            return tagsArray.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell", for: indexPath) as! TagCell
-        var cellItem:Tag
+        var cellItem: tagCellElement
 
-        if searchController.isActive{
+        if searchController.isActive {
             cellItem = searchResults[indexPath.row]
         }
-        else{
-             cellItem = tags[indexPath.row]
+        else {
+             cellItem = tagsArray[indexPath.row]
         }
+        print("assigning stuff to cell...")
+        print("cell name: " + cellItem.name)
         cell.name?.text = cellItem.name
-        cell.color = cellItem.color as! UIColor
-        cell.count.text = String(describing: cellItem.notes?.count)
-
+    
+        cell.color = cellItem.color
+        //print(" cell count: " + cell)
+        cell.count.text = String(describing: cellItem.count) + " note"
+        if cellItem.count != 1 {
+            cell.count.text! += "s"
+        }
+        //print("setting up cell")
+        cell.setupCell()
+        print("we made a cell")
         return cell
     }
 
@@ -175,7 +238,9 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
         return true
     }
     */
-
+    
+    //Tags list does not have editing - delete all notes with a tag to get rid of it
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete { //still need to add in deleting it from core data
@@ -193,7 +258,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
-    }
+    }*/
 
     /*
     // Override to support rearranging the table view.
@@ -217,13 +282,15 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating, N
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showTaggedNotes") {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let noteVC = segue.destination as! NotesTableViewController
+                let noteListVC = segue.destination as! NotesTableViewController
                 if searchController.isActive {
-                    noteVC.tag = searchResults[indexPath.row].name
-                    
+                   // noteVC.tag = searchResults[indexPath.row].name
+                    noteListVC.action = searchResults[indexPath.row].action
+                    noteListVC.tag = searchResults[indexPath.row].tag
                 }
                 else {
-                    noteVC.tag = tags[indexPath.row].name
+                    noteListVC.action = tagsArray[indexPath.row].action
+                    noteListVC.tag = tagsArray[indexPath.row].tag
                 }
             }
         }
