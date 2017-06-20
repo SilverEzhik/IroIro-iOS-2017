@@ -369,6 +369,10 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
                 //note.addToTags(CoreDataTag.getTag("test", appDelegate: appDelegate)!)
                 //note.addToTags(CoreDataTag.getTag("yahallo", appDelegate: appDelegate)!)
                 
+                if (action == .tag) {
+                    note.addToTags(tag!)
+                }
+                
                 print(CoreDataNote.getTotalNoteCount(appDelegate: appDelegate))
                 appDelegate.saveContext()
                 
