@@ -182,8 +182,6 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         if let fetchedObjects = controller.fetchedObjects {
             notes = fetchedObjects as! [Note]
         }
-        
-        tableView.reloadData()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
