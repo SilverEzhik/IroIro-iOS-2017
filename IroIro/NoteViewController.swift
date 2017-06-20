@@ -107,6 +107,8 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         //handle note edit start
         NoteTitle.delegate = self
         
+        //NoteTitle.attributedPlaceholder = NSAttributedString(string: "Note title", attributes: <#T##[String : Any]?#>)
+        
         //allow editing note content
         NoteContent.allowsEditingTextAttributes = true
         NoteContent.delegate = self
