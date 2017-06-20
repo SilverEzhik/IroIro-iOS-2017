@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		732B925B1EE8EC85009D7DD4 /* UIColorHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */; };
+		9F1C89D41EF8BC38007FD615 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C89D31EF8BC38007FD615 /* UITextFieldExtension.swift */; };
 		9F2790241EF3A28300CCF75A /* ColorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2790231EF3A28300CCF75A /* ColorPopup.swift */; };
 		9F27902A1EF3A5A500CCF75A /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2790251EF3A5A500CCF75A /* NoteCell.swift */; };
 		9F27902B1EF3A5A500CCF75A /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2790261EF3A5A500CCF75A /* NotesTableViewController.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		732B925A1EE8EC85009D7DD4 /* UIColorHexExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
+		9F1C89D31EF8BC38007FD615 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		9F2790231EF3A28300CCF75A /* ColorPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPopup.swift; sourceTree = "<group>"; };
 		9F2790251EF3A5A500CCF75A /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		9F2790261EF3A5A500CCF75A /* NotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */,
+				9F1C89D31EF8BC38007FD615 /* UITextFieldExtension.swift */,
 				9FBDC5B11EF7F72F00D64A5D /* IroIroTextView.swift */,
 			);
 			name = NoteViewHelpers;
@@ -251,6 +254,7 @@
 				9F6F453A1EF76226006FD130 /* timeAgoSinceDate.swift in Sources */,
 				9FE4107F1EF1E99D007A0350 /* Colors.swift in Sources */,
 				9F27902D1EF3A5A500CCF75A /* TagCell.swift in Sources */,
+				9F1C89D41EF8BC38007FD615 /* UITextFieldExtension.swift in Sources */,
 				9F5680AA1EDCF48200E1F2B4 /* IroIro.xcdatamodeld in Sources */,
 				9F6F45381EF5FEAA006FD130 /* CoreDataTag.swift in Sources */,
 				9F27902A1EF3A5A500CCF75A /* NoteCell.swift in Sources */,

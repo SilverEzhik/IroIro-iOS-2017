@@ -67,7 +67,6 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         } else {
             Colors.setTintColor(Colors.Default)
         }
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -165,15 +164,15 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         switch type {
         case .insert:
             if let newIndexPath = newIndexPath {
-                tableView.insertRows(at: [newIndexPath], with: .left)
+                tableView.insertRows(at: [newIndexPath], with: .fade)
             }
         case .delete:
             if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .left)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         case .update:
             if let indexPath = indexPath {
-                tableView.reloadRows(at: [indexPath], with: .left)
+                tableView.reloadRows(at: [indexPath], with: .fade)
             }
         default:
             tableView.reloadData()
@@ -258,6 +257,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
         
         cell.name.textColor = cellColor
         cell.content.textColor = cellColor
+        cell.time.textColor = Colors.darker(cellColor)
         cell.tagListView.tagBackgroundColor = Colors.darker(cellColor)
         cell.tagListView.textColor = UIColor.white
         

@@ -69,7 +69,12 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
             isNewNote = false
         }
         setTintColor()
+
     }
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardNotifications()
@@ -78,7 +83,6 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
                 disableEditing()
             }
             saveData()
-            self.title = note.name
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -178,10 +182,15 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         tagView.backgroundColor = (tag.color as! UIColor)
         
         tagView.onTap = { void in
+            tagView.selectedBackgroundColor = (tag.color as! UIColor)
+            tagView.highlightedBackgroundColor = (tag.color as! UIColor)
+            tagView.backgroundColor = (tag.color as! UIColor)
             CoreDataTag.showTag(tag, storyboard: self.storyboard!, navigationController: self.navigationController!)
         }
         tagView.onLongPress = { void in
-            //self.noteTagLongPress(tag: Tag, noteTag: TagView)
+            tagView.selectedBackgroundColor = (tag.color as! UIColor)
+            tagView.highlightedBackgroundColor = (tag.color as! UIColor)
+            tagView.backgroundColor = (tag.color as! UIColor)
             self.noteTagLongPress(tag: tag, tagView: tagView)
         }
         return tagView
@@ -191,10 +200,15 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
         let tagView = tagList.insertTag("#" + tag.name!, at: at)
         tagView.backgroundColor = (tag.color as! UIColor)
         tagView.onTap = { void in
+            tagView.selectedBackgroundColor = (tag.color as! UIColor)
+            tagView.highlightedBackgroundColor = (tag.color as! UIColor)
+            tagView.backgroundColor = (tag.color as! UIColor)
             CoreDataTag.showTag(tag, storyboard: self.storyboard!, navigationController: self.navigationController!)
         }
         tagView.onLongPress = { void in
-            //self.noteTagLongPress(tag: Tag, noteTag: TagView)
+            tagView.selectedBackgroundColor = (tag.color as! UIColor)
+            tagView.highlightedBackgroundColor = (tag.color as! UIColor)
+            tagView.backgroundColor = (tag.color as! UIColor)
             self.noteTagLongPress(tag: tag, tagView: tagView)
         }
         return tagView
@@ -473,6 +487,7 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
                 plusTag.isHidden = true //then hide (+) for real
             })
             
+            self.tagInput.setBottomBorder(borderColor: UIColor(hexString: "333333"))
             tagInput.becomeFirstResponder()
         }
             //(+) not visible, text field visible
@@ -483,6 +498,8 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
                 plusTag.alpha = 1.0 //then fade in the (+)
                 self.tagInput.isHidden = true //hide the text field
             })
+            
+            addNewTag(tagInput.text!)
         }
         
         clearTagSelection() //clear tags

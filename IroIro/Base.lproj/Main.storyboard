@@ -22,7 +22,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="96" id="FqN-kn-y8I" customClass="NoteCell" customModule="IroIro" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="96" id="FqN-kn-y8I" customClass="NoteCell" customModule="IroIro" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="56" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FqN-kn-y8I" id="e13-xR-ZYo">
@@ -118,7 +118,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagCell" focusStyle="custom" rowHeight="72" id="CQ9-TL-DYM" customClass="TagCell" customModule="IroIro" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="tagCell" focusStyle="custom" rowHeight="72" id="CQ9-TL-DYM" customClass="TagCell" customModule="IroIro" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="56" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CQ9-TL-DYM" id="AfA-G8-xmU">
@@ -239,7 +239,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#tag" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-NX-Kb3">
-                                                <rect key="frame" x="0.0" y="114" width="375" height="17"/>
+                                                <rect key="frame" x="5" y="114" width="365" height="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
@@ -1138,7 +1138,7 @@ Some text to fill the space:
                                             </textView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="jcb-NX-Kb3" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" id="4io-hJ-J5U"/>
+                                            <constraint firstItem="jcb-NX-Kb3" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" constant="-10" id="4io-hJ-J5U"/>
                                             <constraint firstItem="5iz-bc-M1c" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" constant="-10" id="81x-yD-hjg"/>
                                             <constraint firstItem="UFJ-eP-Pu1" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" constant="-10" id="YB8-ef-lvp"/>
                                             <constraint firstItem="d6v-cd-NOB" firstAttribute="width" secondItem="dP8-Je-gi2" secondAttribute="width" id="c7g-28-bTf"/>
