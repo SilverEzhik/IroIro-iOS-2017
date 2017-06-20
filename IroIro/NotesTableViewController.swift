@@ -72,6 +72,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        searchController.isActive = false
     }
     
     

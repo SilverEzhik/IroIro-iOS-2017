@@ -78,9 +78,15 @@ class NoteViewController: UIViewController, TagListViewDelegate, UITextFieldDele
                 disableEditing()
             }
             saveData()
+            self.title = note.name
         }
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            //let backItem = UIBarButtonItem()
+            //backItem.title = note.name
+            //navigationItem.backBarButtonItem = backItem // this will show in the next view controller being pushed
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
