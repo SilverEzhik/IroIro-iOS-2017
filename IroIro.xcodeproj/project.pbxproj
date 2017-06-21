@@ -30,6 +30,7 @@
 		9FE4107A1EF1E8CF007A0350 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE410761EF1E8CF007A0350 /* TagView.swift */; };
 		9FE4107D1EF1E8E9007A0350 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */; };
 		9FE4107F1EF1E99D007A0350 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4107E1EF1E99D007A0350 /* Colors.swift */; };
+		9FFD481A1EFA398D00D67207 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD48191EFA398D00D67207 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		9FE410761EF1E8CF007A0350 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		9FE4107C1EF1E8E9007A0350 /* HashtagParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
 		9FE4107E1EF1E99D007A0350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		9FFD48191EFA398D00D67207 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		9F6F453C1EF77A57006FD130 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9FFD48191EFA398D00D67207 /* AboutViewController.swift */,
 				9F2790291EF3A5A500CCF75A /* TagsTableViewController.swift */,
 				9F2790261EF3A5A500CCF75A /* NotesTableViewController.swift */,
 				9F2790271EF3A5A500CCF75A /* NoteViewController.swift */,
@@ -260,6 +263,7 @@
 				9F27902A1EF3A5A500CCF75A /* NoteCell.swift in Sources */,
 				9F2790241EF3A28300CCF75A /* ColorPopup.swift in Sources */,
 				9F6F45371EF5FEAA006FD130 /* CoreDataNote.swift in Sources */,
+				9FFD481A1EFA398D00D67207 /* AboutViewController.swift in Sources */,
 				9FE4107D1EF1E8E9007A0350 /* HashtagParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

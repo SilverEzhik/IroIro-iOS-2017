@@ -62,11 +62,11 @@ class Colors: NSObject {
     }
     
     static func setTintColor(_ color: UIColor) {
-        print("trying to change ui color")
+        //print("trying to change ui color")
         UIView.animate(withDuration: 0.5, animations: {
             UIApplication.shared.delegate?.window??.tintColor = color
         })
-        print("changed it, i hope")
+        //print("changed it, i hope")
         return
     }
     

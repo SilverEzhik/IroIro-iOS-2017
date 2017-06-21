@@ -30,7 +30,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
         //re-setup the array every time we come back to the tags view
         setupTagsList()
         
-        print("We finished that function")
+        //print("We finished that function")
         
     }
     
@@ -111,7 +111,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
     func setupTagsList() {
         //clear the array for upcoming evils
         tagsArray = []
-        print("time to get to work")
+        //print("time to get to work")
         
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             let context = appDelegate.persistentContainer.viewContext
@@ -121,7 +121,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
             
             //next find if there are any untagged notes, if there are, append the item
             let untaggedCount = CoreDataNote.getUntaggedNoteCount(appDelegate: appDelegate)
-            print("Untagged: " + String(untaggedCount))
+            //print("Untagged: " + String(untaggedCount))
             if untaggedCount > 0 {
                 tagsArray.append(tagCellElement(name: "Untagged", action: .untagged, count: CoreDataNote.getUntaggedNoteCount(appDelegate: appDelegate), color: UIColor.white, tag: nil))
             }
@@ -135,7 +135,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
                 let sortedTags = fetchedTags.sorted(by: {
                     ($0.notes?.count)! > ($1.notes?.count)! //descending order
                 })
-                print("tags fetched: " + String(sortedTags.count))
+                //print("tags fetched: " + String(sortedTags.count))
                 
                 //now that we have sorted tags, deal with them
                 for tag in sortedTags {
@@ -146,7 +146,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
                         context.delete(tag) //delete tag if there are no notes in it
                     }
                 }
-                print("we're done with tags")
+                //print("we're done with tags")
             }
             catch {
                 print(error)
@@ -197,7 +197,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("get cell count")
+        //print("get cell count")
         if searchController.isActive {
             return searchResults.count
         }
@@ -217,8 +217,8 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
         else {
              cellItem = tagsArray[indexPath.row]
         }
-        print("assigning stuff to cell...")
-        print("cell name: " + cellItem.name)
+        //print("assigning stuff to cell...")
+        //print("cell name: " + cellItem.name)
         cell.name?.text = cellItem.name
     
         cell.color = cellItem.color
@@ -229,7 +229,7 @@ class TagsTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         //print("setting up cell")
         cell.setupCell()
-        print("we made a cell")
+        //print("we made a cell")
         return cell
     }
 

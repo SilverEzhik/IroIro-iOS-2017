@@ -50,23 +50,29 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNj-To-BgD" customClass="TagListView" customModule="IroIro">
-                                            <rect key="frame" x="8" y="68" width="9989" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
-                                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="8"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                    <real key="value" value="0.0"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
+                                        <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6At-NT-8Db">
+                                            <rect key="frame" x="8" y="70" width="367" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNj-To-BgD" customClass="TagListView" customModule="IroIro">
+                                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
                                         </view>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -107,7 +113,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFN-3e-EGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306.5" y="26.5"/>
+            <point key="canvasLocation" x="-308" y="25.637181409295355"/>
         </scene>
         <!--Tags-->
         <scene sceneID="gEk-Fx-VEr">
@@ -158,7 +164,7 @@
                         <barButtonItem key="backBarButtonItem" title="Tags" id="DOv-Vw-8b4"/>
                         <barButtonItem key="rightBarButtonItem" title="About" id="3fq-13-PpE">
                             <connections>
-                                <segue destination="ZrI-Gb-Il5" kind="show" id="0Nw-L1-cGV"/>
+                                <segue destination="ZrI-Gb-Il5" kind="presentation" id="0Nw-L1-cGV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -184,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynb-3q-UQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1210" y="-798"/>
+            <point key="canvasLocation" x="-2119" y="27"/>
         </scene>
         <!--Note View Controller-->
         <scene sceneID="HyW-ya-BlR">
@@ -204,7 +210,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dP8-Je-gi2">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="944"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Note title" placeholder="Note title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5iz-bc-M1c">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Note title" placeholder="Note title" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5iz-bc-M1c">
                                                 <rect key="frame" x="5" y="0.0" width="365" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="3Vr-sB-sFl"/>
@@ -238,7 +244,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#tag" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-NX-Kb3">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#tag" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-NX-Kb3">
                                                 <rect key="frame" x="5" y="98" width="365" height="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1190,91 +1196,82 @@ Some text to fill the space:
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxB-BA-glx" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="511" y="27"/>
+            <point key="canvasLocation" x="574" y="27"/>
         </scene>
         <!--About-->
         <scene sceneID="SC0-YS-dZD">
             <objects>
-                <viewController title="About" id="ZrI-Gb-Il5" sceneMemberID="viewController">
+                <viewController title="About" id="ZrI-Gb-Il5" customClass="AboutViewController" customModule="IroIro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Tk-0F-Ew3"/>
                         <viewControllerLayoutGuide type="bottom" id="VIa-TC-pOC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0W1-sS-7MM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGg-gM-qrQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Lia-aH-LML">
-                                <rect key="frame" x="24" y="82" width="115" height="115"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHd-G7-siP">
-                                <rect key="frame" x="147" y="66" width="204" height="143"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <string key="text">IroIro, is an easy to use, rudimentary yet elegant application for you to create and store notes. IroIro utilizes the use of tags to organize and categories your notes. </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTH-mG-BER">
-                                <rect key="frame" x="24" y="176" width="327" height="425"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <string key="text">IroIro allows its users to sort and search saved notes through color coded tags for better organization and sleekness. Through IroIro you can save notes the exact way you typed them! (Bold/Italic/Other Languages are all supported). IroIro also searches for your tags as you type them. Overall IroIro is an app that would make your life simpler, neater, and easier.
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="o7G-nq-79I">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Lia-aH-LML">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="243.5"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DkH-sy-82e">
+                                        <rect key="frame" x="0.0" y="243.5" width="375" height="403.5"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hw1-lw-dm8">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="355.5"/>
+                                                <mutableString key="text">IroIro is an easy to use app for you to create and store notes. With IroIro, you can store your notes the way you want them - with formatting options to let the important text stand out. With IroIro’s sleek color-coded tags, you can organize your thoughts, ideas, shopping lists in a way that will make them easy to find in the future.
 
-IroIro was developed by a team of 4 college students studying iOS development in De Anza College in the San Francisco Bay Area. The application was developed as a part of their final project based on the lessons and concepts they were thought in class.
+IroIro was developed by a team of 4 college students studying iOS development at De Anza College in the San Francisco Bay Area.
 
-Developers:
-Dmitry Konev
-Neoman Nouiouat
-Meta Novitia
-Garry Fanata
+Developers: Dmitry Konev, Neoman Nouiouat, Meta Novitia, Garry Fanata
 
-</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8J-vc-l5P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmX-Jo-xam">
-                                <rect key="frame" x="24" y="543" width="327" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <string key="text">Resources used:
-Paintbrush Icon: http://megaicons.net/iconspack-60/1151/</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cl-HF-Kll">
-                                <rect key="frame" x="0.0" y="617" width="375" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.078558593989999995" green="0.078556239599999994" blue="0.078557834029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+Paintbrush icon: https://icons8.com</mutableString>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioz-4w-fVH">
+                                                <rect key="frame" x="0.0" y="355.5" width="375" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="t5x-Gx-QN9"/>
+                                                </constraints>
+                                                <state key="normal" title="Back to IroIro"/>
+                                                <connections>
+                                                    <action selector="DismissButton:" destination="ZrI-Gb-Il5" eventType="touchUpInside" id="JC7-L6-Kjk"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lia-aH-LML" firstAttribute="height" relation="lessThanOrEqual" secondItem="o7G-nq-79I" secondAttribute="height" id="8OO-G8-6TD"/>
+                                    <constraint firstItem="DkH-sy-82e" firstAttribute="width" secondItem="o7G-nq-79I" secondAttribute="width" id="Mu9-4L-Ik0">
+                                        <variation key="heightClass=compact" constant="-200"/>
+                                    </constraint>
+                                    <constraint firstItem="Lia-aH-LML" firstAttribute="height" secondItem="DkH-sy-82e" secondAttribute="height" constant="-160" id="tPa-Gx-W1I">
+                                        <variation key="heightClass=compact" constant="0.0"/>
+                                    </constraint>
+                                </constraints>
+                                <variation key="heightClass=compact" axis="horizontal"/>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="o7G-nq-79I" firstAttribute="width" secondItem="0W1-sS-7MM" secondAttribute="width" id="Aj3-Z6-EQi"/>
+                            <constraint firstItem="VIa-TC-pOC" firstAttribute="top" secondItem="o7G-nq-79I" secondAttribute="bottom" id="NQy-Pe-WV3"/>
+                            <constraint firstItem="o7G-nq-79I" firstAttribute="top" secondItem="1Tk-0F-Ew3" secondAttribute="bottom" id="ae6-GD-5Hj"/>
+                            <constraint firstItem="o7G-nq-79I" firstAttribute="centerX" secondItem="0W1-sS-7MM" secondAttribute="centerX" id="oEk-Qw-cGL"/>
+                        </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8nY-YE-F5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1210.4000000000001" y="731.78410794602701"/>
+            <point key="canvasLocation" x="-1210" y="776"/>
         </scene>
     </scenes>
     <resources>

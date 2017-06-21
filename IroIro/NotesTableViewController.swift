@@ -27,32 +27,32 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
     
     //this function will exit the tag view if it is empty
     func checkForEmpty() {
-        print("hi this is note list")
+        //print("hi this is note list")
         //pop self if tag is gone or empty
         if (action == .tag) {
             if (tag?.managedObjectContext == nil) {
-                print("no tag context")
+                //print("no tag context")
                 self.navigationController?.popToRootViewController(animated: true)
                 //self.navigationController?.popViewController(animated: true)
                 //self.dismiss(animated: true, completion: nil)
             }
             if (tag?.notes?.count == 0) {
-                print("tag count = 0")
+                //print("tag count = 0")
                 self.navigationController?.popToRootViewController(animated: true)
                 //self.dismiss(animated: true, completion: nil)
             }
             if (notes.count == 0) {
-                print("array empty")
+                //print("array empty")
                 self.navigationController?.popToRootViewController(animated: true)
                 //self.dismiss(animated: true, completion: nil)
             }
         }
         else if (action == .untagged && notes.count == 0) {
-            print("nothing left")
+            //print("nothing left")
             self.navigationController?.popToRootViewController(animated: true)
             //self.dismiss(animated: true, completion: nil)
         }
-        print("not empty?")
+        //print("not empty?")
     }
     
     
@@ -299,13 +299,13 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
                 //else {
                 itemToDelete = self.fetchResultsController.object(at: indexPath)
                 //}
-                print("doing the delete")
+                //print("doing the delete")
                 context.delete(itemToDelete)
                 
-                print("saving context")
+                //print("saving context")
                 appDelegate.saveContext()
                 
-                print("saved context")
+                //print("saved context")
                 //updateSearchResults(for: searchController)
                 //tableView.reloadData()
                 
@@ -357,12 +357,12 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
                 
                 let note = Note(context: context)
                 
-                print("This new note is empty!")
+                //print("This new note is empty!")
                 note.name = ""
-                print(note.name!)
+                //print(note.name!)
                 
                 note.content = NSAttributedString(string: " ", attributes: [NSFontAttributeName: UIFont(name: "Helvetica", size: 14)])
-                print((note.content as! NSAttributedString).string)
+                //print((note.content as! NSAttributedString).string)
                 note.time = NSDate()
                 //note.addToTags(CoreDataTag.getTag("test", appDelegate: appDelegate)!)
                 //note.addToTags(CoreDataTag.getTag("yahallo", appDelegate: appDelegate)!)
@@ -371,7 +371,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating, 
                     note.addToTags(tag!)
                 }
                 
-                print(CoreDataNote.getTotalNoteCount(appDelegate: appDelegate))
+                //print(CoreDataNote.getTotalNoteCount(appDelegate: appDelegate))
                 appDelegate.saveContext()
                 
                 noteVC.note = note
